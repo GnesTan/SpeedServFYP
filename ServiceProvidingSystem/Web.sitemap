@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+<siteMapNode url="~/Homepage.aspx" title="Homepage"  description="Homepage">
+<siteMapNode url="~/CustomerMenu.aspx" title="CustomerMenu"  description="CustomerMenu" />
+<siteMapNode url="~/Customer/EditProfile.aspx" title="EditProfile"  description="EditProfile" />
+<siteMapNode url="~/Customer/PurchaseHistory.aspx" title="PurchaseHistory"  description="PurchaseHistory" />
+<siteMapNode url="~/Customer/ShoppingList.aspx" title="ShoppingList"  description="ShoppingList" />
+  
+  
+<siteMapNode url="~/Customer/UserView.aspx" title="UserView"  description="UserView" />
+<siteMapNode url="~/Artist/ViewArtistProfile.aspx" title="ViewArtistProfile"  description="ViewArtistProfile" />
+<siteMapNode url="~/Artist/ArtistMenu.aspx" title="Artist Menu"  description="Artist Menu" />
+<siteMapNode url="~/Artist/ViewArt.aspx" title="View Posted Art"  description="View Posted Art" />
+<siteMapNode url="~/Artist/PostArt.aspx" title="Post Art"  description="Post Art" />
+<siteMapNode url="~/Artist/EditProfile.aspx" title="Edit Artist Profile"  description="Edit Artist Profile" />
+<siteMapNode url="~/Customer/ViewSelectedArt.aspx" title="ViewSelectedArt"  description="ViewSelectedArt" />
+<siteMapNode url="~/Customer/WishList.aspx" title="WishList"  description="WishList" />  
+  
+  
+<siteMapNode url="~/ChangePassword.aspx" title="ChangePassword"  description="ChangePassword" />
+<siteMapNode url="~/RegisterArtist.aspx" title="RegisterArtist"  description="RegisterArtist" />
+<siteMapNode url="~/RegisterCustomer.aspx" title="RegisterCustomer"  description="RegisterCustomer" />
+<siteMapNode url="~/Login.aspx" title="Login"  description="Login" />
+    <siteMapNode url="" title=""  description="" />
+  </siteMapNode>
+</siteMap>
