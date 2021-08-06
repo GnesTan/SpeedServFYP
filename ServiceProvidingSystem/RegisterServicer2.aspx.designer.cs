@@ -11,7 +11,7 @@ namespace ServiceProvidingSystem
 {
 
 
-    public partial class Login
+    public partial class RegisterServicer2
     {
 
         /// <summary>
@@ -24,13 +24,13 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// EmailRequired control.
+        /// EmailREValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailREValidator;
 
         /// <summary>
         /// txtPassword control.
@@ -51,57 +51,39 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
 
         /// <summary>
-        /// btnLogin control.
+        /// txtConfirmPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmPass;
 
         /// <summary>
-        /// cbRemember control.
+        /// ConfirmPassRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbRemember;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmPassRequired;
 
         /// <summary>
-        /// HyperLink1 control.
+        /// hlTermsPrivacy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.HyperLink hlTermsPrivacy;
 
         /// <summary>
-        /// HyperLink4 control.
+        /// btnNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
-
-        /// <summary>
-        /// HyperLink2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
-
-        /// <summary>
-        /// btnStaffLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStaffLogin;
+        protected global::System.Web.UI.WebControls.Button btnNext;
     }
 }

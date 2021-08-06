@@ -43,12 +43,19 @@
                     <tr>
                         <td style="text-align:center">
                    
-                            <asp:Button ID="btnLogin" runat="server" Text="Login" ValidationGroup="Login1"/>
+                            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" ValidationGroup="Login1"/>
                    
                         </td>             
                     </tr>
 
                 </table> 
+               
+            </div>
+
+            <div style="text-align:left;">
+
+            <asp:CheckBox ID="cbRemember" runat="server" /> Remember Me
+
             </div>
 
             <hr>
@@ -65,6 +72,20 @@
                     <td style="text-align:center">
                             Want to register as User? Click <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/RegisterUser.aspx">Here</asp:HyperLink>
                     </td>
+                </tr>
+
+                <tr>
+                    <td style="text-align:center">
+                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/RegisterUser.aspx">Forgot your password?</asp:HyperLink>
+                    </td>
+                </tr>
+
+                <tr>
+                        <td style="text-align:center">
+                   
+                            <asp:Button ID="btnStaffLogin" runat="server" Text="LOGIN AS STAFF" ValidationGroup="Login1"/>
+                   
+                        </td>             
                 </tr>
 
             </table>

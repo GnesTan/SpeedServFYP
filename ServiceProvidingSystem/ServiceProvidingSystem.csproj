@@ -67,12 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\SpeedServ.mdf" />
-    <Content Include="App_Data\SpeedServ_log.ldf">
-      <DependentUpon>SpeedServ.mdf</DependentUpon>
+    <Content Include="App_Data\SpeedyServ.mdf" />
+    <Content Include="App_Data\SpeedyServ_log.ldf">
+      <DependentUpon>SpeedyServ.mdf</DependentUpon>
     </Content>
     <Content Include="Image\1280px-Mastercard-logo.svg.png" />
     <Content Include="Image\ArtistSlider1.jpg" />
+    <None Include="Image\BackIcon.jpg" />
     <Content Include="Image\CustomerSlider2.jpg" />
     <Content Include="Image\Giorno.jpg" />
     <Content Include="Image\hiclipart.com.png" />
@@ -166,6 +167,12 @@
     <Content Include="Pics\lisa.jpg" />
     <Content Include="Pics\mona lisa.jpg" />
     <Content Include="Pics\pepe lisa.jpg" />
+    <Content Include="RegisterServicer.aspx" />
+    <None Include="Resources\Back.jpg" />
+    <Content Include="RegisterServicer2.aspx" />
+    <Content Include="RegisterServicer3.aspx" />
+    <Content Include="RegisterSuccessful.aspx" />
+    <None Include="Resources\Success.JPG" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -178,6 +185,39 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterServicer.aspx.cs">
+      <DependentUpon>RegisterServicer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterServicer.aspx.designer.cs">
+      <DependentUpon>RegisterServicer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterServicer2.aspx.cs">
+      <DependentUpon>RegisterServicer2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterServicer2.aspx.designer.cs">
+      <DependentUpon>RegisterServicer2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterServicer3.aspx.cs">
+      <DependentUpon>RegisterServicer3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterServicer3.aspx.designer.cs">
+      <DependentUpon>RegisterServicer3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterSuccessful.aspx.cs">
+      <DependentUpon>RegisterSuccessful.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegisterSuccessful.aspx.designer.cs">
+      <DependentUpon>RegisterSuccessful.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -196,6 +236,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Web.sitemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
