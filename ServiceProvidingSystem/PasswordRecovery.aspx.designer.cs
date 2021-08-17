@@ -11,106 +11,79 @@ namespace ServiceProvidingSystem
 {
 
 
-    public partial class Login
+    public partial class PasswordRecovery
     {
 
         /// <summary>
-        /// txtEmail control.
+        /// lblCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.Label lblCurrentPassword;
 
         /// <summary>
-        /// EmailRequired control.
+        /// txtCurrentPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrentPassword;
 
         /// <summary>
-        /// txtPassword control.
+        /// lblNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.Label lblNewPassword;
 
         /// <summary>
-        /// PasswordRequired control.
+        /// txtNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
+        protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
 
         /// <summary>
-        /// btnLogin control.
+        /// lblConfirmNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLogin;
+        protected global::System.Web.UI.WebControls.Label lblConfirmNewPassword;
 
         /// <summary>
-        /// cbRemember control.
+        /// txtConfirmNewPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbRemember;
+        protected global::System.Web.UI.WebControls.TextBox txtConfirmNewPassword;
 
         /// <summary>
-        /// hlServicer control.
+        /// ChangePasswordPushButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton hlServicer;
+        protected global::System.Web.UI.WebControls.Button ChangePasswordPushButton;
 
         /// <summary>
-        /// hlClient1 control.
+        /// CancelPushButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton hlClient1;
-
-        /// <summary>
-        /// HyperLink2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink2;
-
-        /// <summary>
-        /// btnStaffLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnStaffLogin;
-
-        /// <summary>
-        /// lblWrong control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblWrong;
+        protected global::System.Web.UI.WebControls.Button CancelPushButton;
     }
 }

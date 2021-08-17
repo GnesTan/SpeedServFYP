@@ -1,8 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="RegisterSuccessful.aspx.cs" Inherits="ServiceProvidingSystem.RegisterSuccessful" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
-
-
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
 
  
@@ -10,7 +8,6 @@
 
 
          <hr>
-      <div>
              
               <!-- Login Form -->
  

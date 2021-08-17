@@ -11,8 +11,17 @@ namespace ServiceProvidingSystem
 {
 
 
-    public partial class RegisterServicer2
+    public partial class Register2
     {
+
+        /// <summary>
+        /// lblUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUser;
 
         /// <summary>
         /// txtEmail control.
@@ -51,6 +60,15 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
 
         /// <summary>
+        /// PasswordMin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordMin;
+
+        /// <summary>
         /// txtConfirmPass control.
         /// </summary>
         /// <remarks>
@@ -85,5 +103,23 @@ namespace ServiceProvidingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnNext;
+
+        /// <summary>
+        /// lblEmailExist control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEmailExist;
+
+        /// <summary>
+        /// lblNotMatch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNotMatch;
     }
 }

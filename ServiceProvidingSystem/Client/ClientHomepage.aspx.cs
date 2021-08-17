@@ -5,13 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ServiceProvidingSystem
+namespace ServiceProvidingSystem.Client
 {
-    public partial class RegisterServicer3 : System.Web.UI.Page
+    public partial class ClientHomepage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["strId"] == null)
+            {
+                Response.Redirect("~/Login.aspx", true);
 
+            }
         }
     }
 }

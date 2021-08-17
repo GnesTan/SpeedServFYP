@@ -6,11 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 using System.Web.Security;
 
 namespace ServiceProvidingSystem
 {
-    public partial class Site1 : System.Web.UI.MasterPage
+    public partial class ServicerHeader : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -18,35 +19,16 @@ namespace ServiceProvidingSystem
             {
 
 
-
                 try
                 {
+                    String strRetrieveName = "";
 
-                    if (Session["strId"] != null)
+                    if (Session["strRetrieveName"] != null)
                     {
-                        String userType = "";
-
-                        if (Session["userType"] != null)
-                        {
-                            userType = Session["userType"].ToString();
-                        }
-
-                        String strFeatured;
-                        Control ctlControl;
-
-                        if (userType.Equals("Servicer"))
-                        {
-                            strFeatured = "~/ServicerHeader.ascx";
-                        }
-                        else
-                        {
-                            strFeatured = "~/ClientHeader.ascx";
-                        }
-
-                        ctlControl = LoadControl(strFeatured);
-                        headerControl.Controls.Add(ctlControl);
-
+                        strRetrieveName = Session["strRetrieveName"].ToString();
                     }
+
+                    welcomeName.Text = "Welcome back, " + strRetrieveName;
 
                 }
                 catch (Exception ex)
@@ -62,12 +44,12 @@ namespace ServiceProvidingSystem
 
 
 
-
-
             }
-
         }
 
+        protected void ibProfile_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("~/Servicer/ServicerViewProfile.aspx");
+        }
     }
-
 }

@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 
 namespace ServiceProvidingSystem
 {
-    public partial class RegisterSuccessful : System.Web.UI.Page
+    public partial class ErrorPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.AddHeader("REFRESH", "5;URL=Login.aspx");
+            ErrorCode.Text = Application["ErrorCode"].ToString();
+            ErrorMessage.Text = Application["ErrorMessage"].ToString();
         }
     }
 }

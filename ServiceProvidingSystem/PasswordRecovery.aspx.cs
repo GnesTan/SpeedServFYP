@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ServiceProvidingSystem
 {
-    public partial class RegisterServicer2 : System.Web.UI.Page
+    public partial class PasswordRecovery : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

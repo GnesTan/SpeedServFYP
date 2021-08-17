@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="RegisterServicer2.aspx.cs" Inherits="ServiceProvidingSystem.RegisterServicer2" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register2.aspx.cs" Inherits="ServiceProvidingSystem.Register2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
 
 
@@ -20,7 +20,7 @@
 
 
         <div>
-             <h1>Sign up as Servicer</h1>
+             <h1>Sign up as <asp:Label ID="lblUser" runat="server"></asp:Label></h1>
         </div>
         <div class="loginChild">
             <div class="inputLayout">
@@ -46,7 +46,8 @@
 
                     <tr>
                         <td style="text-align:center">
-                                                        <asp:RequiredFieldValidator style="color:red" ID="PasswordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Register2">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator style="color:red" ID="PasswordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Register2">Password is required.</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator style="color:red" runat="server" ID="PasswordMin" ControlToValidate = "txtPassword" ValidationExpression = "^[\s\S]{6,}$" ErrorMessage="Minimum 6 characters required." ValidationGroup="Register2"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
 
@@ -58,7 +59,7 @@
 
                     <tr>
                         <td style="text-align:center">
-                            <asp:RequiredFieldValidator style="color:red" ID="ConfirmPassRequired" runat="server" ControlToValidate="txtConfirmPass" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="Register2">*</asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator style="color:red" ID="ConfirmPassRequired" runat="server" ControlToValidate="txtConfirmPass" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="Register2">Confirm Password is required.</asp:RequiredFieldValidator>
                         </td>
                     </tr>
 
@@ -70,12 +71,14 @@
                             <asp:HyperLink ID="hlTermsPrivacy" runat="server" NavigateUrl="~/ChangePassword.aspx">Terms of Use and Privacy Policy</asp:HyperLink>
 
                 <div style="margin-top:25px;">
-                <asp:Button ID="btnNext" runat="server" Text="NEXT" ValidationGroup="Register2"/>
+                <asp:Button ID="btnNext" runat="server" Text="NEXT" ValidationGroup="Register2" OnClick="btnNext_Click"/>
                </div>
 
             </div>
 
-
+            <asp:Label ID="lblEmailExist" ForeColor="Red" runat="server"></asp:Label>
+            <br>
+            <asp:Label ID="lblNotMatch" ForeColor="Red" runat="server"></asp:Label>
 
         </div>
 

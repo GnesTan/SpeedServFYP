@@ -43,7 +43,7 @@
                     <tr>
                         <td style="text-align:center">
                    
-                            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" ValidationGroup="Login1"/>
+                            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" ValidationGroup="Login1" OnClick="btnLogin_Click"/>
                    
                         </td>             
                     </tr>
@@ -65,12 +65,12 @@
 
                 <tr>
                     <td style="text-align:center">
-                            Want to register as Service Provider? Click <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/RegisterServiceProvider.aspx">Here</asp:HyperLink>
+                            Want to register as Service Provider? Click <asp:LinkButton ID="hlServicer" runat="server" Text="Here" OnClick="hlServicer_Click"/>
                     </td>
                 </tr>
                 <tr>
                     <td style="text-align:center">
-                            Want to register as User? Click <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/RegisterUser.aspx">Here</asp:HyperLink>
+                            Want to register as User? Click <asp:LinkButton ID="hlClient1" runat="server" Text="Here" OnClick="hlClient_Click"/>
                     </td>
                 </tr>
 
@@ -83,12 +83,25 @@
                 <tr>
                         <td style="text-align:center">
                    
-                            <asp:Button ID="btnStaffLogin" runat="server" Text="LOGIN AS STAFF" ValidationGroup="Login1"/>
+                            <asp:Button ID="btnStaffLogin" runat="server" Text="LOGIN AS STAFF" ValidationGroup="Login1" OnClick="btnStaffLogin_Click"/>
+                   
+                        </td>             
+                </tr>
+
+
+                
+                <tr>
+                        <td style="text-align:center">
+                   
+                            <asp:Label ID="lblWrong" ForeColor="Red" runat="server"></asp:Label>
                    
                         </td>             
                 </tr>
 
             </table>
+
+
+
         </div>
 
         </div>

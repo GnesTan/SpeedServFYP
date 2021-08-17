@@ -71,6 +71,15 @@
     <Content Include="App_Data\SpeedyServ_log.ldf">
       <DependentUpon>SpeedyServ.mdf</DependentUpon>
     </Content>
+    <Content Include="Global.asax" />
+    <Content Include="PasswordRecovery.aspx" />
+    <Content Include="ResetPassword.aspx" />
+    <None Include="Resources\icons8-male-user-30.png" />
+    <None Include="Resources\icons8-male-user-90.png" />
+    <Content Include="ServicerHeader.ascx" />
+    <Content Include="Client\ClientHomepage.aspx" />
+    <Content Include="ClientHeader.ascx" />
+    <Content Include="ErrorPage.aspx" />
     <Content Include="Image\1280px-Mastercard-logo.svg.png" />
     <Content Include="Image\ArtistSlider1.jpg" />
     <None Include="Image\BackIcon.jpg" />
@@ -167,16 +176,64 @@
     <Content Include="Pics\lisa.jpg" />
     <Content Include="Pics\mona lisa.jpg" />
     <Content Include="Pics\pepe lisa.jpg" />
-    <Content Include="RegisterServicer.aspx" />
+    <Content Include="Register.aspx" />
     <None Include="Resources\Back.jpg" />
-    <Content Include="RegisterServicer2.aspx" />
-    <Content Include="RegisterServicer3.aspx" />
+    <Content Include="Register2.aspx" />
+    <Content Include="Register3.aspx" />
     <Content Include="RegisterSuccessful.aspx" />
     <None Include="Resources\Success.JPG" />
+    <Content Include="Servicer\ServicerEditProfile.aspx" />
+    <Content Include="Servicer\ServicerHomepage.aspx" />
+    <Content Include="Servicer\ServicerViewProfile.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordRecovery.aspx.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PasswordRecovery.aspx.designer.cs">
+      <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResetPassword.aspx.designer.cs">
+      <DependentUpon>ResetPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServicerHeader.ascx.cs">
+      <DependentUpon>ServicerHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServicerHeader.ascx.designer.cs">
+      <DependentUpon>ServicerHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientHomepage.aspx.cs">
+      <DependentUpon>ClientHomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Client\ClientHomepage.aspx.designer.cs">
+      <DependentUpon>ClientHomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClientHeader.ascx.cs">
+      <DependentUpon>ClientHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClientHeader.ascx.designer.cs">
+      <DependentUpon>ClientHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ErrorPage.aspx.designer.cs">
+      <DependentUpon>ErrorPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,26 +247,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="RegisterServicer.aspx.cs">
-      <DependentUpon>RegisterServicer.aspx</DependentUpon>
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegisterServicer.aspx.designer.cs">
-      <DependentUpon>RegisterServicer.aspx</DependentUpon>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RegisterServicer2.aspx.cs">
-      <DependentUpon>RegisterServicer2.aspx</DependentUpon>
+    <Compile Include="Register2.aspx.cs">
+      <DependentUpon>Register2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegisterServicer2.aspx.designer.cs">
-      <DependentUpon>RegisterServicer2.aspx</DependentUpon>
+    <Compile Include="Register2.aspx.designer.cs">
+      <DependentUpon>Register2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="RegisterServicer3.aspx.cs">
-      <DependentUpon>RegisterServicer3.aspx</DependentUpon>
+    <Compile Include="Register3.aspx.cs">
+      <DependentUpon>Register3.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="RegisterServicer3.aspx.designer.cs">
-      <DependentUpon>RegisterServicer3.aspx</DependentUpon>
+    <Compile Include="Register3.aspx.designer.cs">
+      <DependentUpon>Register3.aspx</DependentUpon>
     </Compile>
     <Compile Include="RegisterSuccessful.aspx.cs">
       <DependentUpon>RegisterSuccessful.aspx</DependentUpon>
@@ -217,6 +274,27 @@
     </Compile>
     <Compile Include="RegisterSuccessful.aspx.designer.cs">
       <DependentUpon>RegisterSuccessful.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ServicerEditProfile.aspx.cs">
+      <DependentUpon>ServicerEditProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ServicerEditProfile.aspx.designer.cs">
+      <DependentUpon>ServicerEditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ServicerHomepage.aspx.cs">
+      <DependentUpon>ServicerHomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ServicerHomepage.aspx.designer.cs">
+      <DependentUpon>ServicerHomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ServicerViewProfile.aspx.cs">
+      <DependentUpon>ServicerViewProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ServicerViewProfile.aspx.designer.cs">
+      <DependentUpon>ServicerViewProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -242,6 +320,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BackendUser\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

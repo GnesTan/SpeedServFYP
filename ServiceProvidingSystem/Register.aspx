@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="RegisterServicer.aspx.cs" Inherits="ServiceProvidingSystem.RegisterServicer" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="ServiceProvidingSystem.Register" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
 
 
@@ -27,7 +27,7 @@
 
 
         <div>
-             <h1>Sign up as Servicer</h1>
+             <h1>Sign up as <asp:Label ID="lblUser" runat="server"></asp:Label></h1>
         </div>
         <div class="loginChild">
             <div class="inputLayout">
@@ -61,6 +61,12 @@
                     <tr>
                         <td style="text-align:center;">
                             <asp:TextBox ID="txtDob" runat="server" type="date"></asp:TextBox>
+                        </td>             
+        
+                    </tr>
+
+                    <tr>
+                        <td style="text-align:center;">
                             <asp:RangeValidator style="color:red" ID="DateValidator" runat="server" ErrorMessage="Age must be between 18 and 100." ControlToValidate="txtDob" Display="Dynamic" Type="Date" ></asp:RangeValidator>
                         </td>             
         
@@ -70,7 +76,7 @@
                 </table> 
 
                 <div style="margin-top:25px;">
-                <asp:Button ID="btnNext" runat="server" Text="NEXT" ValidationGroup="Register1"/>
+                <asp:Button ID="btnNext" runat="server" Text="NEXT" ValidationGroup="Register1" OnClick="btnNext_Click"/>
                </div>
 
             </div>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="RegisterServicer3.aspx.cs" Inherits="ServiceProvidingSystem.RegisterServicer3" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register3.aspx.cs" Inherits="ServiceProvidingSystem.Register3" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
 
@@ -61,6 +61,7 @@
                     <tr>
                         <td style="text-align:center">
                             <asp:RequiredFieldValidator style="color:red" ID="PinNumberRequired" runat="server" ControlToValidate="txtPinNumber" ErrorMessage="PIN number is required." ToolTip="Confirm Password is required." ValidationGroup="Register3">*</asp:RequiredFieldValidator>
+                            <asp:Label ID="lblInvalid" ForeColor="Red" runat="server"></asp:Label>
                         </td>
                     </tr>
 
@@ -69,7 +70,7 @@
                 </table> 
 
                 <div style="margin-top:25px;">
-                <asp:Button ID="btnConfirm" runat="server" Text="CONFIRM" ValidationGroup="Register3"/>
+                <asp:Button ID="btnConfirm" runat="server" Text="CONFIRM" ValidationGroup="Register3" OnClick="btnConfirm_Click"/>
                </div>
 
             </div>

@@ -11,43 +11,34 @@ namespace ServiceProvidingSystem
 {
 
 
-    public partial class RegisterServicer3
+    public partial class ServicerHeader
     {
 
         /// <summary>
-        /// lblEmail control.
+        /// welcomeName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmail;
+        protected global::System.Web.UI.WebControls.Label welcomeName;
 
         /// <summary>
-        /// txtPinNumber control.
+        /// LinkButton4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPinNumber;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
 
         /// <summary>
-        /// PinNumberRequired control.
+        /// LinkButton2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PinNumberRequired;
-
-        /// <summary>
-        /// btnConfirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
+        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
     }
 }
