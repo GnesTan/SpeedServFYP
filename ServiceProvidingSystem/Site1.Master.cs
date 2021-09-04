@@ -22,31 +22,33 @@ namespace ServiceProvidingSystem
                 try
                 {
 
-                    if (Session["strId"] != null)
+                    String userType = "";
+
+                    if (Session["userType"] != null)
                     {
-                        String userType = "";
-
-                        if (Session["userType"] != null)
-                        {
-                            userType = Session["userType"].ToString();
-                        }
-
-                        String strFeatured;
-                        Control ctlControl;
-
-                        if (userType.Equals("Servicer"))
-                        {
-                            strFeatured = "~/ServicerHeader.ascx";
-                        }
-                        else
-                        {
-                            strFeatured = "~/ClientHeader.ascx";
-                        }
-
-                        ctlControl = LoadControl(strFeatured);
-                        headerControl.Controls.Add(ctlControl);
-
+                        userType = Session["userType"].ToString();
                     }
+
+                    String strFeatured;
+                    Control ctlControl;
+
+                    if (userType.Equals("Servicer"))
+                    {
+                        strFeatured = "~/ServicerHeader.ascx";
+                    }
+                    else if(userType.Equals("Backend"))
+                    {
+                        strFeatured = "~/BackendHeader.ascx";
+                    }
+                    else
+                    {
+                        strFeatured = "~/ClientHeader.ascx";
+                    }
+
+                    ctlControl = LoadControl(strFeatured);
+                    headerControl.Controls.Add(ctlControl);
+
+
 
                 }
                 catch (Exception ex)

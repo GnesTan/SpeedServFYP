@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ServiceProvidingSystem
+namespace ServiceProvidingSystem.BackendUser
 {
 
 
-    public partial class ServicerHeader
+    public partial class AccountMaintenance
     {
 
         /// <summary>
-        /// LinkButton2 control.
+        /// Repeater1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
     }
 }

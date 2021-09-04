@@ -1,32 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="ServicerViewProfile.aspx.cs" Inherits="ServiceProvidingSystem.Servicer.ServicerViewProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
        
-    <!-- Welcome Column Section -->
-    <div class="row welcome text-center">  
-         <div class="col-12">
-            <h1>Wishlist</h1>          
-         </div>
-         <div class="col-12">           
-         </div>
-         </div> 
-
-    <hr />
-          <div class="topContainer"> 
-       <!-- Welcome Column Section -->
-         <div class="row welcome text-center">  
-         <div class="col-12">
-            <h1>Hello <asp:Label ID="lblUserName" runat="server"></asp:Label>!</h1>          
-             <p>Welcome to SpeedServ</p>
-         </div>
-         <div class="col-12">  
-            <div class="nav">                 
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/Customer/EditProfile.aspx" CausesValidation="false">Edit Profile</asp:LinkButton></div>
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/Customer/Wishlist.aspx" CausesValidation="false">Wishlist</asp:LinkButton></div>
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/Customer/PurchaseHistory.aspx" CausesValidation="false">Purchase History</asp:LinkButton></div>             
-           </div>         
-         </div>
-         </div>  
-    </div>
 
     <div class="auto-style7">
         <%--If No Item Section--%>

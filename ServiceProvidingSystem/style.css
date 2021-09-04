@@ -43,6 +43,35 @@ html, body {
         visibility: visible;
     }
 
+
+.nav-item ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 20px;
+    display: block;
+}
+
+.nav-item ul li:hover a {
+    background: #34495e;
+}
+
+.nav-item ul ul {
+    position: absolute;
+    padding: 0;
+    min-width: 160px;
+    display: none;
+    top: 100%;
+    left: 0;
+}
+
+.nav-item ul li:hover > ul {
+    display: block;
+}
+
+.nav-item ul ul li:hover a {
+    background: #262626;
+}
+
 /*---Slider --*/
 .carousel-inner img {
     width: 100%;

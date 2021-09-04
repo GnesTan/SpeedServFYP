@@ -5,13 +5,11 @@
 
 
  
-    <!-- Login Section -->
+    <!-- Register2 Section -->
 
 
-         <hr>
-      <div>
              
-              <!-- Login Form -->
+              <!-- Register2 Form -->
  
        <div class="loginForm">
         <div style="text-align:left; float:left;">
@@ -25,10 +23,15 @@
         <div class="loginChild">
             <div class="inputLayout">
                 <table>
+
                     <tr>
                         <td style="text-align:center">
-                            <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email Address"></asp:TextBox>
-                           
+                            <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email Address"></asp:TextBox>               
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">
+                            <asp:RequiredFieldValidator style="color:red" ID="EmailRequired" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email Address is required." ToolTip="Email Address is required." ValidationGroup="Register2">Email Address is required.</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -43,10 +46,13 @@
                             <asp:TextBox ID="txtPassword" runat="server" Placeholder="Password" TextMode="Password"></asp:TextBox>
                         </td>             
                     </tr>
-
                     <tr>
                         <td style="text-align:center">
                             <asp:RequiredFieldValidator style="color:red" ID="PasswordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="Register2">Password is required.</asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">
                             <asp:RegularExpressionValidator style="color:red" runat="server" ID="PasswordMin" ControlToValidate = "txtPassword" ValidationExpression = "^[\s\S]{6,}$" ErrorMessage="Minimum 6 characters required." ValidationGroup="Register2"></asp:RegularExpressionValidator>
                         </td>
                     </tr>
@@ -76,6 +82,7 @@
 
             </div>
 
+            <!-- Error Messages -->
             <asp:Label ID="lblEmailExist" ForeColor="Red" runat="server"></asp:Label>
             <br>
             <asp:Label ID="lblNotMatch" ForeColor="Red" runat="server"></asp:Label>

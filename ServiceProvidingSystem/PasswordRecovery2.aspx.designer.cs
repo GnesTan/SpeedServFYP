@@ -11,8 +11,17 @@ namespace ServiceProvidingSystem
 {
 
 
-    public partial class PasswordRecovery
+    public partial class PasswordRecovery2
     {
+
+        /// <summary>
+        /// imgBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBack;
 
         /// <summary>
         /// lblEmail control.
@@ -24,40 +33,31 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
-        /// txtEmail control.
+        /// txtPinNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtPinNumber;
 
         /// <summary>
-        /// EmailRequired control.
+        /// PinNumberRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PinNumberRequired;
 
         /// <summary>
-        /// EmailREValidator control.
+        /// lblInvalid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailREValidator;
-
-        /// <summary>
-        /// lblError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.Label lblInvalid;
 
         /// <summary>
         /// btnNext control.

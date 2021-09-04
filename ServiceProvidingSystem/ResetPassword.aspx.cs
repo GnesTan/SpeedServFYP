@@ -127,7 +127,14 @@ namespace ServiceProvidingSystem
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-
+            if (Session["userType"].ToString().Equals("Servicer"))
+            {
+                Response.Redirect("~/Servicer/ServicerViewProfile.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/Client/ClientViewProfile.aspx");
+            }
         }
     }
 }

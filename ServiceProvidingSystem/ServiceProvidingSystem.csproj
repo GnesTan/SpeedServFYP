@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -43,6 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.Base, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.Base.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Configuration.ConfigurationBuilders.UserSecrets, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -67,12 +80,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BackendHeader.ascx" />
+    <Content Include="Servicer\CurrentServing.aspx" />
+    <Content Include="Servicer\PostService.aspx" />
+    <Content Include="Servicer\RequestList.aspx" />
+    <Content Include="Servicer\ServiceHistory.aspx" />
+    <Content Include="Servicer\SignOut1.aspx" />
+    <Content Include="Servicer\ViewRequest.aspx" />
+    <Content Include="StaffLogin.aspx" />
     <Content Include="App_Data\SpeedyServ.mdf" />
     <Content Include="App_Data\SpeedyServ_log.ldf">
       <DependentUpon>SpeedyServ.mdf</DependentUpon>
     </Content>
+    <Content Include="BackendUser\AccountMaintenance.aspx" />
+    <Content Include="BackendUser\BackEndHomepage.aspx" />
+    <Content Include="BackendUser\CreateAccount.aspx" />
+    <Content Include="BackendUser\EditAccount.aspx" />
     <Content Include="Global.asax" />
     <Content Include="PasswordRecovery.aspx" />
+    <Content Include="PasswordRecovery2.aspx" />
+    <Content Include="PasswordRecovery3.aspx" />
     <Content Include="ResetPassword.aspx" />
     <None Include="Resources\icons8-male-user-30.png" />
     <None Include="Resources\icons8-male-user-90.png" />
@@ -189,6 +216,90 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackendHeader.ascx.cs">
+      <DependentUpon>BackendHeader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendHeader.ascx.designer.cs">
+      <DependentUpon>BackendHeader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\CurrentServing.aspx.cs">
+      <DependentUpon>CurrentServing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\CurrentServing.aspx.designer.cs">
+      <DependentUpon>CurrentServing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\PostService.aspx.cs">
+      <DependentUpon>PostService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\PostService.aspx.designer.cs">
+      <DependentUpon>PostService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\RequestList.aspx.cs">
+      <DependentUpon>RequestList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\RequestList.aspx.designer.cs">
+      <DependentUpon>RequestList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ServiceHistory.aspx.cs">
+      <DependentUpon>ServiceHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ServiceHistory.aspx.designer.cs">
+      <DependentUpon>ServiceHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\SignOut1.aspx.cs">
+      <DependentUpon>SignOut1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\SignOut1.aspx.designer.cs">
+      <DependentUpon>SignOut1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ViewRequest.aspx.cs">
+      <DependentUpon>ViewRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ViewRequest.aspx.designer.cs">
+      <DependentUpon>ViewRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="StaffLogin.aspx.cs">
+      <DependentUpon>StaffLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffLogin.aspx.designer.cs">
+      <DependentUpon>StaffLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\AccountMaintenance.aspx.cs">
+      <DependentUpon>AccountMaintenance.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\AccountMaintenance.aspx.designer.cs">
+      <DependentUpon>AccountMaintenance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\BackEndHomepage.aspx.cs">
+      <DependentUpon>BackEndHomepage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\BackEndHomepage.aspx.designer.cs">
+      <DependentUpon>BackEndHomepage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\CreateAccount.aspx.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\CreateAccount.aspx.designer.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\EditAccount.aspx.cs">
+      <DependentUpon>EditAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\EditAccount.aspx.designer.cs">
+      <DependentUpon>EditAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -198,6 +309,20 @@
     </Compile>
     <Compile Include="PasswordRecovery.aspx.designer.cs">
       <DependentUpon>PasswordRecovery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordRecovery2.aspx.cs">
+      <DependentUpon>PasswordRecovery2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PasswordRecovery2.aspx.designer.cs">
+      <DependentUpon>PasswordRecovery2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PasswordRecovery3.aspx.cs">
+      <DependentUpon>PasswordRecovery3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PasswordRecovery3.aspx.designer.cs">
+      <DependentUpon>PasswordRecovery3.aspx</DependentUpon>
     </Compile>
     <Compile Include="ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
@@ -321,9 +446,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BackendUser\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -354,7 +477,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

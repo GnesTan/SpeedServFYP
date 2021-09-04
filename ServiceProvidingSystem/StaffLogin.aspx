@@ -1,4 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ServiceProvidingSystem.Login" %>
+﻿
+<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="StaffLogin.aspx.cs" Inherits="ServiceProvidingSystem.StaffLogin" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
 
 
@@ -22,15 +24,15 @@
  
        <div class="loginForm">
         <div>
-             <h1> Login</h1>
+             <h1>Staff Login</h1>
         </div>
         <div class="loginChild">
             <div class="inputLayout">
                 <table>
                     <tr>
                         <td style="text-align:center">
-                            <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email Address"></asp:TextBox>
-                            <asp:RequiredFieldValidator style="color:red" ID="EmailRequired" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required." ToolTip="Email is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                            <asp:TextBox ID="txtUsername" runat="server" Placeholder="Username"></asp:TextBox>
+                            <asp:RequiredFieldValidator style="color:red" ID="UsernameRequired" runat="server" ControlToValidate="txtUsername" ErrorMessage="Username is required." ToolTip="Username is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -64,26 +66,9 @@
 
 
                 <tr>
-                    <td style="text-align:center">
-                            Want to register as Service Provider? Click <asp:LinkButton ID="hlServicer" runat="server" Text="Here" OnClick="hlServicer_Click"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="text-align:center">
-                            Want to register as User? Click <asp:LinkButton ID="hlClient1" runat="server" Text="Here" OnClick="hlClient_Click"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td style="text-align:center">
-                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/PasswordRecovery.aspx">Forgot your password?</asp:HyperLink>
-                    </td>
-                </tr>
-
-                <tr>
                         <td style="text-align:center">
                    
-                            <asp:Button ID="btnStaffLogin" runat="server" Text="LOGIN AS STAFF" OnClick="btnStaffLogin_Click" CausesValidation="false"/>
+                            <asp:Button ID="btnStaffLogin" runat="server" Text="LOGIN AS CUSTOMER" ValidationGroup="Login1" OnClick="btnCustomerLogin_Click"/>
                    
                         </td>             
                 </tr>
