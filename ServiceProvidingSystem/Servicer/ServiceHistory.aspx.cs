@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections;
 
 namespace ServiceProvidingSystem.Servicer
 {
@@ -17,6 +18,7 @@ namespace ServiceProvidingSystem.Servicer
             if (!IsPostBack)
             {
 
+                //to verify servicer login credential
                 String userType = "";
 
                 if (Session["userType"] != null)
@@ -46,28 +48,92 @@ namespace ServiceProvidingSystem.Servicer
             }
 
             SqlConnection con;
-            String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+            String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
             con = new SqlConnection(str);
+
             con.Open();
-            //retrieve data
-            String strSelect = "SELECT S.request_no, S.date_and_time, S.service_category, S.service_type, S.state, S.status, S.district, C.full_name FROM Service_Request S, Client C WHERE S.client_id = C.client_id AND (S.status = 'C' OR S.status = 'D') AND S.servicer_id = '" + strId + "';";
-            SqlCommand cmdSelect = new SqlCommand(strSelect, con);
-
-            SqlDataReader dtrProd = cmdSelect.ExecuteReader();
-
-            if (!dtrProd.HasRows)
+            try
             {
-                RepeaterPanel.Visible = false;
-                NonePanel.Visible = true;
+                //retrieve data
+                String strSelect = "SELECT S.request_no, S.date_and_time, S.service_category, S.service_type, S.state, S.status, S.district, C.full_name FROM Service_Request S, Client C WHERE S.client_id = C.client_id AND (S.status = 'C' OR S.status = 'D') AND S.servicer_id = '" + strId + "';";
+
+                //Do your database connection stuff and get your data
+                SqlConnection cn = new SqlConnection(str);
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = cn;
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                cmd.CommandText = strSelect;
+
+                //save the result in data table
+                DataTable dt = new DataTable();
+                ad.SelectCommand = cmd;
+                ad.Fill(dt);
+
+                //Create the PagedDataSource that will be used in paging
+                PagedDataSource pgitems = new PagedDataSource();
+                pgitems.DataSource = dt.DefaultView;
+                pgitems.AllowPaging = true;
+
+                //Control page size from here 
+                pgitems.PageSize = 10;
+                pgitems.CurrentPageIndex = PageNumber;
+                if (pgitems.PageCount > 1)
+                {
+                    rptPaging.Visible = true;
+                    ArrayList pages = new ArrayList();
+                    for (int i = 0; i <= pgitems.PageCount - 1; i++)
+                    {
+                        if (pgitems.CurrentPageIndex == i)
+                        {
+                            pages.Add("<u>" + (i + 1).ToString() + "</u>");
+                        }
+                        else
+                        {
+                            pages.Add((i + 1).ToString());
+                        }
+
+                    }
+                    rptPaging.DataSource = pages;
+                    rptPaging.DataBind();
+                }
+                else
+                {
+                    rptPaging.Visible = false;
+                }
+
+                if (dt.Rows.Count == 0)
+                {
+                    RepeaterPanel.Visible = false;
+                    NonePanel.Visible = true;
+                }
+                else
+                {
+                    RepeaterPanel.Visible = true;
+                    NonePanel.Visible = false;
+                }
+
+                //Finally, set the datasource of the repeater
+                RepeaterRequest.DataSource = pgitems;
+                RepeaterRequest.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
             }
 
 
-            RepeaterRequest.DataSource = dtrProd;
-            RepeaterRequest.DataBind();
-
-            con.Close();
-
-         
         }
 
         protected void btnView_Click(object sender, EventArgs e)
@@ -87,6 +153,38 @@ namespace ServiceProvidingSystem.Servicer
             Session["selectedRequest"] = selectedRequest.Text;
 
             Response.Redirect("~/Servicer/ViewRequest.aspx");
+        }
+
+        //This property will contain the current page number 
+        public int PageNumber
+        {
+            get
+            {
+                if (ViewState["PageNumber"] != null)
+                {
+                    return Convert.ToInt32(ViewState["PageNumber"]);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            set { ViewState["PageNumber"] = value; }
+        }
+
+        //This method will fire when clicking on the page no link from the pager repeater
+        protected void rptPaging_ItemCommand(object source, System.Web.UI.WebControls.RepeaterCommandEventArgs e)
+        {
+            try
+            {
+                PageNumber = Convert.ToInt32(e.CommandArgument) - 1;
+                BindGrid();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
 
 

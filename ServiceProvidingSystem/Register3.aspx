@@ -1,135 +1,81 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Register3.aspx.cs" Inherits="ServiceProvidingSystem.Register3" %>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
+    <%--Plugins--%>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=PT+Sans&family=Roboto:wght@300&display=swap" rel="stylesheet"> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
+    <%--End Plugins--%>
 
+    <%--CSS File Plugins--%>
+    <link href="../General.css" rel="stylesheet" />   
+    <link href="../ClientHomePage.css" rel="stylesheet" />  
+    <link href="../DisplayService.css" rel="stylesheet" />
+    <link href="../Login.css" rel="stylesheet" />
 
+    <asp:ScriptManager ID="ScriptManager1" runat="server">  
+    </asp:ScriptManager> 
 
-
- 
-    <!-- Login Section -->
-
-
-         <hr>
-      <div>
-             
-              <!-- Login Form -->
- 
-       <div class="loginForm">
-        <div style="text-align:left; float:left;">
-            <asp:ImageButton runat="server" Height="33px" ImageUrl="~/Image/BackIcon.jpg" Width="33px"></asp:ImageButton>
-        </div>
-
-
-        <div>
-             <h1>Email Verification</h1>
-        </div>
-        <div class="loginChild">
-            <div class="inputLayout">
-                <table>
-                    <tr>
-                        <td style="text-align:center">
-                            Your account have created sucessfully, please verify your email to get started.
-                           
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="text-align:center">
-                            <br>
-                        </td>
-                    </tr>
-
-
-                    <tr>
-                        <td style="text-align:center">
-                            An 6-digit pin number have sent to email address <br>
-                            <asp:Label ID="lblEmail" runat="server" ForeColor="Blue"></asp:Label>
-                        </td>             
-                    </tr>
-
-                    <tr>
-                        <td style="text-align:center">
-                            Please check your email and enter the pin number below for verification.
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td style="text-align:center">
-                            <asp:TextBox ID="txtPinNumber" runat="server" Placeholder="XXXXXX"></asp:TextBox>
-                        </td>             
-                    </tr>
-
-                    <tr>
-                        <td style="text-align:center">
-                            <asp:RequiredFieldValidator style="color:red" ID="PinNumberRequired" runat="server" ControlToValidate="txtPinNumber" ErrorMessage="PIN number is required." ToolTip="Confirm Password is required." ValidationGroup="Register3">*</asp:RequiredFieldValidator>
-                            <asp:Label ID="lblInvalid" ForeColor="Red" runat="server"></asp:Label>
-                        </td>
-                    </tr>
-
-
-
-                </table> 
-
-                <div style="margin-top:25px;">
-                <asp:Button ID="btnConfirm" runat="server" Text="CONFIRM" ValidationGroup="Register3" OnClick="btnConfirm_Click"/>
-               </div>
-
+    
+<%--Login--%>   
+    <section id="#" class="login d-flex align-items-center">
+        <div class="container">
+            <div data-aos="zoom-out" data-aos-delay="100">  
+                <div class="shadow p-5 mb-5 bg-white rounded" data-aos="zoom-out" data-aos-delay="50" >   
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row mb-2">
+                                <h3 data-aos="fade-right"><span style="">E</span>mail Verification</h3>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center text-lg-flex justify-content-center">
+                                        <p>Your account have created sucessfully, please verify your email to get started.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="text-center text-lg-flex justify-content-center">
+                                        <p>An 6-digit pin number have sent to email address </p>
+                                        <asp:Label ID="lblEmail" class="reqDetailsLabel verifyEmail align-middle" runat="server" ForeColor="Blue"></asp:Label>
+                                        <br /><br />	
+                                        <p>Please check your email and enter the pin number below for verification.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="text-center text-lg-flex justify-content-center">
+                                        <asp:TextBox type="text" ID="txtPinNumber" class="form-control" runat="server" Placeholder="XXXXXX"></asp:TextBox>
+                                        <asp:RequiredFieldValidator style="color:red" ID="PinNumberRequired" runat="server" ControlToValidate="txtPinNumber" ErrorMessage="PIN number is required." ToolTip="Confirm Password is required." ValidationGroup="Register3">*</asp:RequiredFieldValidator>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12 px-2">
+                                    <div class="text-center text-lg-flex justify-content-center">  
+                                        <asp:Button  ID="btnConfirm" class="w-100 btn btnLogin btn-lg" runat="server" Text="CONFIRM" ValidationGroup="Register3" OnClick="btnConfirm_Click"/>
+                                        <asp:Label ID="lblInvalid" ForeColor="Red" runat="server"></asp:Label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
-
-        </div>
-
-
-
-
-     </div>
-
-    <style type="text/css">
-
-    h1{
-        font-size:larger;
-    }
-
-    body{    
-        background-color: #f2f2f2;      
-    }
-
-    .loginForm {
-        background-color: white;
-        text-align:center;
-        max-width: 680px;
-        margin: auto;
-        box-shadow: 3px 3px 10px 0 #b3b3b3;
-        border-radius: 5px;    
-        width: 35%;
-        height:500px;
-        display: block;
-        margin-top: 30px;
-        margin-bottom: 5%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 3%;
-        position: relative;
-    }
-
-    .loginChild{
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      margin: -25px 0 0 -25px; /* apply negative top and left margins to truly center the element */
-      margin-top:10%;
-
-    }
-
-    .inputLayout{
-      margin-left:auto;
-      margin-right:auto;
-
-    }
-
-
-
-    </style>
-
+<%--End Login--%>
+           </div>
+    </section>
+    
+    <%-- AOS script plugin--%>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+    /* AOS plugin script*/
+    AOS.init();
+</script>
 </asp:Content>
-

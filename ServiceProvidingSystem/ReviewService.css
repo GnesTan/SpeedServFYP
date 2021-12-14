@@ -1,0 +1,94 @@
+﻿.reviewServ {
+    width: 100%;
+    margin-top: 100px;
+}
+
+    .reviewServ .container {
+        padding: 20px 300px 20px 300px;
+    }
+
+    .reviewServ h3 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .reviewServ h5 {
+        font-size: 16px;
+        color: #7d7d7d;
+    }
+
+    .reviewServ h3 span {
+        color: #FE5959;
+        font-weight: 700;
+        font-weight: 700;
+    }
+
+    .reviewServ .btn-find-now {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 25px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #7B51F2;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+        .reviewServ .btn-find-now span {
+            font-family: "PT Sans", sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .reviewServ .btn-find-now i {
+            margin-left: 5px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .reviewServ .btn-find-now:hover i {
+            transform: translateX(5px);
+            font-size: 20px;
+            transition: transform .5s;
+        }
+
+        .reviewServ .btn-find-now span:hover {
+            font-weight: 600;
+            font-size: 22px;
+            transition: 0.2s;
+        }
+
+     .reviewServ .btnReview {
+        margin-left: 20px;
+        background-color: #FE5959;
+    }
+
+    .reviewServ .topline {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+    .reviewServ .name {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+#masterfooter {
+    display: none;
+}
+
+.container .star-widget input {
+    display: none;
+}
+
+.star-widget::before {
+    color: grey;
+}
+
+.star-widget {
+    font-size: 40px;
+    color: grey;
+    transition: all 0.2s ease;
+}

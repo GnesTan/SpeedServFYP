@@ -15,6 +15,15 @@ namespace ServiceProvidingSystem
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// lblNewPassword control.
         /// </summary>
         /// <remarks>
@@ -33,15 +42,6 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.TextBox txtNewPassword;
 
         /// <summary>
-        /// NewPasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator NewPasswordRequired;
-
-        /// <summary>
         /// PasswordMin control.
         /// </summary>
         /// <remarks>
@@ -49,6 +49,15 @@ namespace ServiceProvidingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordMin;
+
+        /// <summary>
+        /// NewPasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator NewPasswordRequired;
 
         /// <summary>
         /// lblConfirmNewPassword control.
@@ -69,15 +78,6 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.TextBox txtConfirmNewPassword;
 
         /// <summary>
-        /// ConfirmNewPasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmNewPasswordRequired;
-
-        /// <summary>
         /// NewPasswordCompare control.
         /// </summary>
         /// <remarks>
@@ -87,13 +87,13 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.CompareValidator NewPasswordCompare;
 
         /// <summary>
-        /// btnConfirm control.
+        /// ConfirmNewPasswordRequired control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnConfirm;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmNewPasswordRequired;
 
         /// <summary>
         /// btnCancel control.
@@ -102,15 +102,15 @@ namespace ServiceProvidingSystem
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.WebControls.LinkButton btnCancel;
 
         /// <summary>
-        /// lblError control.
+        /// btnConfirm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.LinkButton btnConfirm;
     }
 }

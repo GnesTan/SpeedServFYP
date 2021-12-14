@@ -39,7 +39,12 @@ namespace ServiceProvidingSystem
             Application["NoOfErrors"] = (int)Application["NoOfErrors"] + 1;
             Exception ex = Server.GetLastError();
             HttpException httpException = (HttpException)ex;
-            int httpCode = httpException.GetHttpCode();
+            int httpCode = 404;
+            if (httpException != null)
+            {
+                httpCode = httpException.GetHttpCode();
+            }
+
             if (ex != null)
             {
                 String message = ex.Message;

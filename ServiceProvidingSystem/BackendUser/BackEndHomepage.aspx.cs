@@ -14,6 +14,7 @@ namespace ServiceProvidingSystem.BackendUser
 
             if (!IsPostBack)
             {
+                //to verify backend user login credential
                 String userType = "";
 
                 if (Session["userType"] != null)

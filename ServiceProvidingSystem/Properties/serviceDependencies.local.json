@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "mssql1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/speedserv/databases/SpeedServAzureDB",
+      "resourceId": "/subscriptions/[parameters('subscriptionId3')]/resourceGroups/[parameters('resourceGroup')]/providers/Microsoft.Sql/servers/speedservofficial2077/databases/speedservofficial2021",
       "type": "mssql.azure",
       "connectionId": "SpeedServAzureDB",
       "secretStore": "LocalSecretsFile"

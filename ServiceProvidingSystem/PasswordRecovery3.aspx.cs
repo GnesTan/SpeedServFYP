@@ -12,7 +12,8 @@ namespace ServiceProvidingSystem
 {
     public partial class PasswordRecovery3 : System.Web.UI.Page
     {
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        //setup SQL connection
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -28,20 +29,19 @@ namespace ServiceProvidingSystem
             String dbTable = Session["recoveryUserType"].ToString();
             String emailAddress = Session["emailAddress"].ToString();
 
-
+            con.Open();
             try
             {
-                con.Open();
 
-            //update servicer password
-                String strAdd = "UPDATE " + dbTable + " SET password = @newPassword WHERE email_address = @emailAddress;";
+                //update servicer password
+                String strUpdate = "UPDATE " + dbTable + " SET password = @newPassword WHERE email_address = @emailAddress;";
 
-                SqlCommand cmdAdd = new SqlCommand(strAdd, con);
+                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
 
-                cmdAdd.Parameters.AddWithValue("@newPassword", newPassword);
-                cmdAdd.Parameters.AddWithValue("@emailAddress", emailAddress);
+                cmdUpdate.Parameters.AddWithValue("@newPassword", newPassword);
+                cmdUpdate.Parameters.AddWithValue("@emailAddress", emailAddress);
 
-                cmdAdd.ExecuteNonQuery();
+                cmdUpdate.ExecuteNonQuery();
 
                 con.Close();
             }
@@ -71,7 +71,7 @@ namespace ServiceProvidingSystem
         protected void btnCancel_Click(object sender, EventArgs e)
         {
 
-           Response.Redirect("~/Login.aspx");
+            Response.Redirect("~/Login.aspx");
 
 
         }

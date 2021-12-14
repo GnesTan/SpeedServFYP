@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
        
 
-    <div class="auto-style7">
+    <div class="mainContainer">
         <%--If No Item Section--%>
 
 
@@ -18,7 +18,7 @@
                                 <asp:Label ID="lblName" runat="server" Text="Name:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpName" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpName" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -26,7 +26,7 @@
                                 <asp:Label ID="lblIC" runat="server" Text="IC No.:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpIC" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpIC" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -34,7 +34,7 @@
                                 <asp:Label ID="lblDob" runat="server" Text="Date of Birth:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpDob" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpDob" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -42,7 +42,7 @@
                                 <asp:Label ID="lblGender" runat="server" Text="Gender:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpGender" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpGender" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -50,7 +50,7 @@
                                 <asp:Label ID="lblPhoneNo" runat="server" Text="Phone No.:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpPhoneNo" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpPhoneNo" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -58,15 +58,15 @@
                                 <asp:Label ID="lblEmail" runat="server" Text="Email Address:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpEmail" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpEmail" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
-                        <tr class="rowStyle">
+                        <tr class="rowStyle" style="height:150px;">
                             <td>
                                 <asp:Label ID="lblAddress" runat="server" Text="Home Address:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpAddress" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpAddress" runat="server" Width="200px" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -74,7 +74,7 @@
                                 <asp:Label ID="lblDays" runat="server" Text="Working Days:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpDays" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpDays" runat="server" Width="200px" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                         <tr class="rowStyle">
@@ -82,7 +82,7 @@
                                 <asp:Label ID="lblTime" runat="server" Text="Available Time:"></asp:Label>
                             </td>
                             <td>
-                                <asp:Label ID="lblDpTime" runat="server"></asp:Label>
+                                <asp:Label ID="lblDpTime" runat="server" Font-Bold="true"></asp:Label>
                             </td>
                         </tr>
                     </table>
@@ -95,7 +95,7 @@
             </div> 
 
                                 <div class="profilePic">
-                    <asp:Image ID="imgProfile" runat="server" Height="140px" Width="140px" style="border-radius:100px; box-shadow: 0 0 0 3px #b3b3b3; text-decoration:none;" ImageUrl="~/Image/Giorno.jpg" />
+                    <asp:Image ID="imgProfile" runat="server" Height="140px" Width="140px" style="border-radius:100px; box-shadow: 0 0 0 3px #b3b3b3; text-decoration:none;" ImageUrl="~/Image/Foto_Formal.jpg" />
                 </div>
 
 
@@ -108,8 +108,14 @@
             </div> 
 
             <div class="otherBtn">
-                <a href="Artist/ArtistMenu.aspx" class="btnNew btn-primary btn-lg">Edit Profile</a>
-                <a href="Artist/ArtistMenu.aspx" class="btnNew btn-secondary btn-lg">Deactivate</a>
+                <a href="ServicerEditProfile.aspx" class="btnNew btn-primary btn-lg">Edit Profile</a>
+                <asp:LinkButton ID="lbDeactivate" runat="server" onClientClick="return fnConfirm();" class="btnNew btn-secondary btn-lg" OnClick="lbDeactivate_Click">Deactivate</asp:LinkButton>
+                <script type="text/javascript">
+                    function fnConfirm() {
+                        return confirm("Are you sure you want to deactivate this account? (After deactivated, your services are not able to view by client.)");
+                    }
+                </script>
+                <asp:LinkButton ID="lbActivate" runat="server" class="btnNew btn-secondary btn-lg" OnClick="lbActivate_Click" Visible="false">Activate</asp:LinkButton>
             </div> 
         </div> 
     <br />
@@ -124,10 +130,15 @@
         background-color: #f2f2f2;      
     }
 
+        header{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        background: white;
+    }
+
     .infoContainer { 
         
         text-align: left;
-        height:500px;
+        height:650px;
         box-shadow: 3px 3px 10px 0 #b3b3b3;
         border-radius: 2px;  
         margin-left:10%;
@@ -154,12 +165,13 @@
 
     .rowStyle > td {
         padding-bottom: 1em;
+        padding-right:20px;
 
     }
     
 
 
-.auto-style7 {
+.mainContainer {
         background-color: white;
         max-width: 1000px;
         margin: auto;
@@ -169,28 +181,11 @@
         padding-top: 50px;
         padding-bottom: 100px;
         margin-bottom: 100px;
+        margin-top:150px;
+        height:820px;
 }
 
 
-
-.topContainer{
-    text-align: center;
-    font-size: 25px;
-    background-color: white;
-    width: 100%;
-    height: 220px;
-}
-
-.auto-style9 {       
-    width: 30px;
-    height: 30px;
-}
-
-.topicName{
-    max-width: 1000px;
-    margin: auto;
-    font-size: 25px;
-}
 
 .profilePic{
     float:right;
@@ -207,39 +202,6 @@
 
 }
 
-.nav {
-  list-style-type: none;
-  display: inline-block;
-  text-align: center;
-  margin: 0;      
-}
-
-.ul {
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-    color: #c48e0e;
-}
-
-.btn{  
-  max-width: 100%;
-  max-height: 100%;
-  background: none;
-  border: 3px solid;
-  border-radius: 20px;
-  color: #c48e0e;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 16px;
-  position: relative;
-  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
-}
-
-.btn:hover {   
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-  color: #f5d142;
-  transition-delay: 0.05s;  
-}
 
 /*---Button --*/
 .btnNew{  

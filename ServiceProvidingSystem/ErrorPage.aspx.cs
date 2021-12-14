@@ -14,5 +14,35 @@ namespace ServiceProvidingSystem
             ErrorCode.Text = Application["ErrorCode"].ToString();
             ErrorMessage.Text = Application["ErrorMessage"].ToString();
         }
+
+        protected void btnHome_Click(object sender, EventArgs e)
+        {
+            //to verify backend user login credential
+            String userType = "";
+
+            if (Session["userType"] != null)
+            {
+                userType = Session["userType"].ToString();
+            }
+
+
+            if (userType.Equals("Backend"))
+            {
+                Response.Redirect("~/BackendUser/BackEndHomepage.aspx");
+            }
+            else if (userType.Equals("Servicer"))
+            {
+                Response.Redirect("~/Servicer/RequestList.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/Client/ClientHomePage.aspx");
+            }
+
+        }
+
     }
+
+
+
 }

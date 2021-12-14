@@ -47,9 +47,17 @@ namespace ServiceProvidingSystem
             }
         }
 
+        protected void lbSignOut_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.RemoveAll();
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
+        }
 
 
 
 
-    }
+
+        }
 }

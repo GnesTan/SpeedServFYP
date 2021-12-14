@@ -6,15 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Web.Security;
+
 
 namespace ServiceProvidingSystem.BackendUser
 {
     public partial class CreateAccount : System.Web.UI.Page
     {
+        //setup SQL connection
         String table = "Back_end_User";
 
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -25,6 +26,7 @@ namespace ServiceProvidingSystem.BackendUser
 
             if (!IsPostBack)
             {
+                //to verify backend user login credential
                 String userType = "";
 
                 if (Session["userType"] != null)
@@ -46,7 +48,7 @@ namespace ServiceProvidingSystem.BackendUser
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/AccountMaintenance.aspx");
+            Response.Redirect("~/BackendUser/AccountMaintenance.aspx");
         }
 
         protected void btnCreate_Click(object sender, EventArgs e)
@@ -55,6 +57,7 @@ namespace ServiceProvidingSystem.BackendUser
             String strFullname = "";
             String strPassword = "";
 
+            //get data from textfield
             strUsername = txtUsername.Text;
             strFullname = txtName.Text;
             strPassword = txtPassword.Text;
@@ -65,22 +68,37 @@ namespace ServiceProvidingSystem.BackendUser
 
             //check from admin database
             con.Open();
-
-            //retrieve data
-            String strAdd = "SELECT * FROM Back_end_User WHERE USERNAME = @USERNAME;";
-
-            SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-            cmdAdd.Parameters.AddWithValue("@USERNAME", strUsername);
-            SqlDataReader dataReader;
-            dataReader = cmdAdd.ExecuteReader();
-            while (dataReader.Read())
+            try
             {
-                recordFound++;
+                //retrieve data
+                String strSelect = "SELECT * FROM Back_end_User WHERE USERNAME = @USERNAME;";
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@USERNAME", strUsername);
+                SqlDataReader dataReader;
+                dataReader = cmdSelect.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    recordFound++;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
             }
 
-            con.Close();
-
-            if(recordFound == 0)
+            if (recordFound == 0)
             {
                 con.Open();
 
@@ -88,9 +106,9 @@ namespace ServiceProvidingSystem.BackendUser
                 {
 
                     //retrieve data
-                    strAdd = "INSERT INTO " + table + "(USERNAME, FULL_NAME, PASSWORD) VALUES (@USERNAME, @FULL_NAME, @PASSWORD);";
+                    String strAdd = "INSERT INTO " + table + "(USERNAME, FULL_NAME, PASSWORD) VALUES (@USERNAME, @FULL_NAME, @PASSWORD);";
 
-                    cmdAdd = new SqlCommand(strAdd, con);
+                    SqlCommand cmdAdd = new SqlCommand(strAdd, con);
 
                     cmdAdd.Parameters.AddWithValue("@USERNAME", strUsername);
                     cmdAdd.Parameters.AddWithValue("@FULL_NAME", strFullname);
@@ -100,6 +118,7 @@ namespace ServiceProvidingSystem.BackendUser
 
                     con.Close();
 
+                    //display popup message and redirect
                     ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Account have successful created.');window.location.href='AccountMaintenance.aspx';", true);
 
 
@@ -121,7 +140,8 @@ namespace ServiceProvidingSystem.BackendUser
             }
             else
             {
-                lblErrorUsername.Text = "Usersame have been used, please try again with another username.";
+                //display error message
+                lblErrorUsername.Text = "Username have been used, please try again with another username.";
             }
 
 

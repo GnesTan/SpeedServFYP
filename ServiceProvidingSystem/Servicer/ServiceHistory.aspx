@@ -56,7 +56,7 @@
                                 <asp:Label ID="lblCategory" runat="server" Font-Bold="true" ForeColor="Black" Text='<%# Eval("service_category") %>'></asp:Label>
                             </td>
                             <td style="width:200px;">
-                                <asp:Label ID="lblArea" runat="server" Font-Bold="true" ForeColor="Black" Text='<%# Eval("area") %>'></asp:Label>,&nbsp<asp:Label ID="lblState" runat="server" Font-Bold="true" ForeColor="Black" Text='<%# Eval("state") %>'></asp:Label>
+                                <asp:Label ID="lblArea" runat="server" Font-Bold="true" ForeColor="Black" Text='<%# Eval("district") %>'></asp:Label><%# (string)Eval("district") =="" ? "" : ", " %><asp:Label ID="lblState" runat="server" Font-Bold="true" ForeColor="Black" Text='<%# Eval("state") %>'></asp:Label>
                             </td>
 
                     
@@ -113,6 +113,21 @@
    
         </asp:Repeater>  
 
+        <div style="overflow: hidden; text-align:center;">
+
+        <asp:Repeater ID="rptPaging" runat="server" OnItemCommand="rptPaging_ItemCommand">
+         <ItemTemplate>
+          <asp:LinkButton ID="btnPage"
+           style="padding: 8px; margin: 2px; background: lightgray; border: solid 1px #666; color: black; font-weight: bold"
+           CommandName="Page" CommandArgument="<%# Container.DataItem %>"
+           runat="server" ForeColor="White" Font-Bold="True">
+            <%# Container.DataItem %>
+          </asp:LinkButton>
+         </ItemTemplate>
+        </asp:Repeater>
+
+        </div>
+
                 </asp:Panel>
 
                     <asp:Panel ID="NonePanel" runat="server" Visible="false">
@@ -142,49 +157,18 @@
         background-color: #f2f2f2;      
     }
 
-.images{    
-    width: 150px;
-    height: 110px;    
-    background: #f3f3f3;
-    padding: 1px;
-    border: 2px solid #161616;
-    margin-left: 20px;
-    position: relative;
-    vertical-align: top;    
-    box-shadow: inset -5px -5px 30px 0 #656565;
-    margin: 10px 15px 10px 15px;
-}
+        header{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        background: white;
+    }
 
-.rowMargin{
-    padding-left:5px;
-    padding-top:15px;
-    float:left;
-}
+    .rowMargin{
+        padding-left:5px;
+        padding-top:15px;
+        float:left;
+    }
 
 
-
-.gridviewcss{
-     background-color: white;
-    margin-top:20px;
-    margin-bottom:20px;
-    padding-top:20px;
-    padding-bottom:20px;
-
-}
-
-.noItemForm{
-    background-color: white;
-    margin: auto;
-    box-shadow: 3px 3px 10px 0 #b3b3b3;
-    border-radius: 5px;    
-    width: 40%;
-    display: block;
-    margin-top: 30px;
-    margin-bottom: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px; 
-}
 
     .noItemContainer {                                           
         text-align: center;
@@ -212,17 +196,6 @@
     }
 
 
-.auto-style2 {
-    font-size: medium;
-}
-
-.auto-style3 {
-    font-size: large;
-}
-.auto-style4 {
-    color: #FF9900;
-}
-
 
 .rowStyle{
     height:140px;
@@ -244,38 +217,14 @@
 }
 
 
-.topContainer{
-    text-align: center;
-    font-size: 25px;
-    background-color: white;
-    width: 100%;
-    height: 220px;
-}
-
-.auto-style9 {       
-    width: 30px;
-    height: 30px;
-}
 
 .topicName{
     max-width: 1000px;
     margin: auto;
+    margin-top: 110px;
     font-size: 25px;
 }
 
-.nav {
-  list-style-type: none;
-  display: inline-block;
-  text-align: center;
-  margin: 0;      
-}
-
-.ul {
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-    color: #c48e0e;
-}
 
 .btnClass {
     float:right;
@@ -283,40 +232,40 @@
     margin-right:20px;
 }
 
-        /*---Button --*/
-        .btnNew{  
-          text-align:center;
-          width:100px;
-          background: none;
-          border: 3px solid;
-          border-radius: 10px;
-          color: #ffffff;
-          font-weight: 600;
-          cursor: pointer;
-          position: relative;
-          box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
-        }
+/*---Button --*/
+.btnNew{  
+    text-align:center;
+    width:100px;
+    background: none;
+    border: 3px solid;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
+}
 
 
-        .btn-primary {
-            background-color: #EF7E7E;
-            border: 1px solid #EF7E7E;
-        }
+.btn-primary {
+    background-color: #EF7E7E;
+    border: 1px solid #EF7E7E;
+}
 
-        .btn-primary:hover {
-                background-color: #F68888;
-                border: 1px solid #F68888;
-        }
+.btn-primary:hover {
+        background-color: #F68888;
+        border: 1px solid #F68888;
+}
 
-        .btn-secondary {
-            background-color: #7B51F2;
-            border: 1px solid #7B51F2;
-        }
+.btn-secondary {
+    background-color: #7B51F2;
+    border: 1px solid #7B51F2;
+}
 
-        .btn-secondary:hover {
-                background-color: #8F6BF6;
-                border: 1px solid #8F6BF6;
-        }
+.btn-secondary:hover {
+        background-color: #8F6BF6;
+        border: 1px solid #8F6BF6;
+}
 
 
 

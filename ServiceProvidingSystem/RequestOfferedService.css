@@ -1,0 +1,183 @@
+﻿.reqOffServ {
+    width: 100%;
+    margin-top: 100px;
+}
+
+    .reqOffServ .container {
+        padding: 20px 200px 20px 200px;
+    }
+
+    .reqOffServ h1 {
+        margin: 0;
+        font-size: 45px;
+        font-weight: 700;
+        color: #393939;
+    }
+
+.reqOffServ h1 span {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    color: #FE5959;
+}
+
+    .reqOffServ h3 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .reqOffServ h4 {
+        font-size: 16px;
+        color: #7d7d7d;
+    }
+
+    .reqOffServ h5 {
+        font-size: 16px;
+        color: #7d7d7d;
+    }
+
+    .reqOffServ h3 span {
+        color: #FE5959;
+        font-weight: 700;
+        font-weight: 700;
+    }
+
+    .reqOffServ .btn-find-now {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 25px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #FE5959;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+    .reqOffServ .btnView {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 17px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #FE5959;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+    .reqOffServ .btnDismiss {
+        margin-top: 10px;
+        margin-right: 20px;
+        line-height: 0;
+        padding: 17px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #7B51F2;
+        box-shadow: 0px 5px 30px rgba(268, 100, 50, 0.2);
+    }
+
+    .reqOffServ .btnContact {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 17px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #1BA100;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+    .reqOffServ .btn-find-now span {
+        font-family: "PT Sans", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .reqOffServ .btn-find-now i {
+        margin-left: 5px;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+.reqOffServ .btn-find-now:hover i {
+    transform: translateX(5px);
+    font-size: 20px;
+    transition: transform .5s;
+}
+
+    .reqOffServ .btn-find-now span:hover {
+        font-weight: 600;
+        font-size: 22px;
+        transition: 0.2s;
+    }
+
+    .reqOffServ .topline {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+.reqOffServ {
+    margin-bottom: 3%;
+}
+
+    .reqOffServ .reqDetailsLabel {
+        font-size: 20px;
+    }
+
+    .reqOffServ .title {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .reqOffServ .rateStar {
+        color: gold;
+        font-size: 22px;
+    }
+
+    .reqOffServ .location {
+        text-decoration: underline;
+        font-size: 14px;
+        font-weight: 400;
+        color: #7d7d7d;
+    }
+
+    .reqOffServ .serviceName {
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .reqOffServ .serviceCatType {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .reqOffServ .addFav {
+        width: 35px;
+        height: 35px;
+    }
+
+
+    .reqOffServ .price {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .reqOffServ .remark {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+.rateStar::before {
+    padding-bottom: 5px;
+}
+
+.reqOffServ .imgServicePic {
+    width: 160px;
+    height: 160px;
+    box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}

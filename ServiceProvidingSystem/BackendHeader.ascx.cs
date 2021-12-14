@@ -24,8 +24,6 @@ namespace ServiceProvidingSystem
                         strRetrieveName = Session["strRetrieveName"].ToString();
                     }
 
-                    welcomeName.Text = "Welcome back, " + strRetrieveName;
-
                 }
                 catch (Exception ex)
                 {
@@ -43,9 +41,12 @@ namespace ServiceProvidingSystem
             }
         }
 
-        protected void ibProfile_Click(object sender, ImageClickEventArgs e)
+        protected void lbSignOut_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Servicer/ServicerViewProfile.aspx");
+            Session.Clear();
+            Session.RemoveAll();
+            Session.Abandon();
+            Response.Redirect("~/StaffLogin.aspx");
         }
     }
 }

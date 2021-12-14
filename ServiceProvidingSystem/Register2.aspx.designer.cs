@@ -15,6 +15,15 @@ namespace ServiceProvidingSystem
     {
 
         /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+
+        /// <summary>
         /// lblUser control.
         /// </summary>
         /// <remarks>
@@ -33,15 +42,6 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// EmailRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
-
-        /// <summary>
         /// EmailREValidator control.
         /// </summary>
         /// <remarks>
@@ -49,6 +49,15 @@ namespace ServiceProvidingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator EmailREValidator;
+
+        /// <summary>
+        /// EmailRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator EmailRequired;
 
         /// <summary>
         /// txtPassword control.
@@ -60,15 +69,6 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// PasswordRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
-
-        /// <summary>
         /// PasswordMin control.
         /// </summary>
         /// <remarks>
@@ -76,6 +76,15 @@ namespace ServiceProvidingSystem
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator PasswordMin;
+
+        /// <summary>
+        /// PasswordRequired control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequired;
 
         /// <summary>
         /// txtConfirmPass control.
@@ -96,13 +105,13 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ConfirmPassRequired;
 
         /// <summary>
-        /// hlTermsPrivacy control.
+        /// btnBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlTermsPrivacy;
+        protected global::System.Web.UI.WebControls.LinkButton btnBack;
 
         /// <summary>
         /// btnNext control.
@@ -111,24 +120,15 @@ namespace ServiceProvidingSystem
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.LinkButton btnNext;
 
         /// <summary>
-        /// lblEmailExist control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailExist;
-
-        /// <summary>
-        /// lblNotMatch control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNotMatch;
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

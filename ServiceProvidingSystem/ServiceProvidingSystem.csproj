@@ -44,6 +44,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Web, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -57,6 +61,18 @@
       <HintPath>..\packages\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.2.0.0\lib\Net471\Microsoft.Configuration.ConfigurationBuilders.UserSecrets.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,6 +82,24 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -80,13 +114,129 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ServiceProvidingSystem.mdf" />
+    <Content Include="App_Data\ServiceProvidingSystem_log.ldf">
+      <DependentUpon>ServiceProvidingSystem.mdf</DependentUpon>
+    </Content>
     <Content Include="BackendHeader.ascx" />
+    <Content Include="BackendUser\BackendReport.aspx" />
+    <Content Include="BackendUser\ClientPayment.aspx" />
+    <Content Include="BackendUser\SalesTransactionReport.aspx" />
+    <Content Include="BackendUser\SalesTransactionReportSetting.aspx" />
+    <Content Include="CancelService.css" />
+    <Content Include="ClientHomePage.css" />
+    <Content Include="BackendUser\ServicerWithdrawal.aspx" />
+    <Content Include="BackendUser\SubscriptionRequest.aspx" />
+    <Content Include="BackendUser\SubscriptionVolumeReport.aspx" />
+    <Content Include="BackendUser\UserTypeRatioAnalysisReport.aspx" />
+    <Content Include="Client\CancelService.aspx" />
+    <Content Include="Client\ClientHomePage.aspx" />
+    <Content Include="Client\ClientViewReport.aspx" />
+    <Content Include="Client\DisplayService.aspx" />
+    <Content Include="Client\DisplayServiceDetails.aspx" />
+    <Content Include="Client\EditProfile.aspx" />
+    <Content Include="Client\Favourite.aspx" />
+    <Content Include="Client\PaymentDetails.aspx" />
+    <Content Include="Client\PaymentList.aspx" />
+    <Content Include="Client\PaymentMethodSelectionClient.aspx" />
+    <Content Include="Client\PaymentSuccess.aspx" />
+    <Content Include="Client\PayService.aspx" />
+    <Content Include="Client\PayServiceBankTransfer.aspx" />
+    <Content Include="Client\PostServiceRequest.aspx" />
+    <Content Include="Client\RecentTransaction.aspx" />
+    <Content Include="Client\RequestOfferedService.aspx" />
+    <Content Include="Client\RequestStatusList.aspx" />
+    <Content Include="Client\ReviewService.aspx" />
+    <Content Include="Client\ServiceRequestReport.aspx" />
+    <Content Include="Client\ServiceRequestReportSetting.aspx" />
+    <Content Include="Client\TransactionReport.aspx" />
+    <Content Include="Client\TransactionReportSetting.aspx" />
+    <Content Include="Client\ViewProfile.aspx" />
+    <Content Include="Client\ViewRequestStatus.aspx" />
+    <Content Include="Client\ViewServicerDetails.aspx" />
+    <Content Include="Client\ViewServicerReviews.aspx" />
+    <Content Include="Client\ViewTransactionDetails.aspx" />
+    <Content Include="DisplayService.css" />
+    <Content Include="DisplayServiceDetails.css" />
+    <Content Include="General.css" />
+    <Content Include="Image\AnnualService.JPG" />
+    <Content Include="Image\bronze-rank.png" />
+    <Content Include="Image\Bronze.png" />
+    <Content Include="Image\CustomerReview.JPG" />
+    <Content Include="Image\feat1.png" />
+    <Content Include="Image\feat2.png" />
+    <Content Include="Image\feat3.png" />
+    <Content Include="Image\feat4.png" />
+    <Content Include="Image\Foto_Formal.jpg" />
+    <Content Include="Image\gold-rank.png" />
+    <Content Include="Image\Gold.png" />
+    <Content Include="Image\heart-regular-40.png" />
+    <Content Include="Image\heart-solid-40.png" />
+    <Content Include="Image\homepagelogo.png" />
+    <Content Include="Image\IconSubscription.JPG" />
+    <Content Include="Image\noImage.png" />
+    <Content Include="Image\Review1.jpg" />
+    <Content Include="Image\Review2.JPG" />
+    <Content Include="Image\Review3.jpg" />
+    <Content Include="Image\ServiceDetails.JPG" />
+    <Content Include="Image\silver-rank.png" />
+    <Content Include="Image\Silver.png" />
+    <Content Include="Image\star-solid-36.png" />
+    <Content Include="Image\SubscriptionVolume.JPG" />
+    <Content Include="Image\UserMaintenance.png" />
+    <Content Include="Image\UserTypeRatio.JPG" />
+    <Content Include="Image\view_report.jpg" />
+    <Content Include="Image\view_request.jpg" />
+    <Content Include="Image\WalletTransaction.JPG" />
+    <Content Include="Image\whatsapp-icon.png" />
+    <Content Include="Image\x-regular-36.png" />
+    <Content Include="Login.css" />
+    <Content Include="PaymentDetails.css" />
+    <Content Include="PaymentSuccess.css" />
+    <Content Include="PayService.css" />
+    <Content Include="PayServiceBankTransfer.css" />
+    <Content Include="PostServiceRequest.css" />
+    <Content Include="PrivacyPolicy.aspx" />
+    <Content Include="RecentTransaction.css" />
+    <Content Include="RequestOfferedService.css" />
+    <Content Include="RequestStatusList.css" />
+    <Content Include="ReviewService.css" />
+    <Content Include="Servicer\AnnualServiceAnalysisReport.aspx" />
+    <Content Include="Servicer\AnnualServiceAnalysisReportSetting.aspx" />
+    <Content Include="Servicer\CreditWithdraw.aspx" />
     <Content Include="Servicer\CurrentServing.aspx" />
+    <Content Include="Servicer\CurrentServingList.aspx" />
+    <Content Include="Servicer\CustomerReviewReport.aspx" />
+    <Content Include="Servicer\DirectRequest.aspx" />
+    <Content Include="Servicer\EditService.aspx" />
+    <Content Include="Servicer\MyRanking.aspx" />
+    <Content Include="Servicer\MyService.aspx" />
+    <Content Include="Servicer\MySubscription.aspx" />
+    <Content Include="Servicer\PayByBankTransfer.aspx" />
+    <Content Include="Servicer\PaymentMethodSelection.aspx" />
     <Content Include="Servicer\PostService.aspx" />
     <Content Include="Servicer\RequestList.aspx" />
+    <Content Include="Servicer\ServiceDetailsReport.aspx" />
+    <Content Include="Servicer\ServiceDetailsReportSetting.aspx" />
     <Content Include="Servicer\ServiceHistory.aspx" />
-    <Content Include="Servicer\SignOut1.aspx" />
+    <Content Include="Servicer\ServicerWallet.aspx" />
+    <Content Include="BackendUser\SubscriptionVolumeReportSetting.aspx" />
+    <Content Include="Servicer\ViewReport.aspx" />
     <Content Include="Servicer\ViewRequest.aspx" />
+    <Content Include="Servicer\WalletTransactionReport.aspx" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="StaffLogin.aspx" />
     <Content Include="App_Data\SpeedyServ.mdf" />
     <Content Include="App_Data\SpeedyServ_log.ldf">
@@ -101,10 +251,18 @@
     <Content Include="PasswordRecovery2.aspx" />
     <Content Include="PasswordRecovery3.aspx" />
     <Content Include="ResetPassword.aspx" />
-    <None Include="Resources\icons8-male-user-30.png" />
-    <None Include="Resources\icons8-male-user-90.png" />
+    <Content Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Content>
     <Content Include="ServicerHeader.ascx" />
-    <Content Include="Client\ClientHomepage.aspx" />
     <Content Include="ClientHeader.ascx" />
     <Content Include="ErrorPage.aspx" />
     <Content Include="Image\1280px-Mastercard-logo.svg.png" />
@@ -125,94 +283,21 @@
     <Content Include="Image\visacardlogo.png" />
     <Content Include="Image\warningIcon.png" />
     <Content Include="Image\—Pngtree—info vector icon_3791375.png" />
-    <Content Include="imgs\adminuser.png" />
-    <Content Include="imgs\Banner1.PNG" />
-    <Content Include="imgs\BannerUserView.PNG" />
-    <Content Include="imgs\book-online.png" />
-    <Content Include="imgs\books.png" />
-    <Content Include="imgs\books1.png" />
-    <Content Include="imgs\defaulters-list.png" />
-    <Content Include="imgs\digital-data.png" />
-    <Content Include="imgs\digital-inventory.png" />
-    <Content Include="imgs\generaluser.png" />
-    <Content Include="imgs\Giorno1.jpg" />
-    <Content Include="imgs\home-bg.jpg" />
-    <Content Include="imgs\in-homepage-banner.jpg" />
-    <Content Include="imgs\Jojo.jpg" />
-    <Content Include="imgs\JojoBanner.jpg" />
-    <Content Include="imgs\Jojolion.jpg" />
-    <Content Include="imgs\library.png" />
-    <Content Include="imgs\publisher.png" />
-    <Content Include="imgs\search-online.png" />
-    <Content Include="imgs\sign-up.png" />
-    <Content Include="imgs\writer.png" />
+    <Content Include="Image\generaluser.png" />
     <Content Include="Login.aspx" />
-    <Content Include="LucaImage\Artist\1.jpg" />
-    <Content Include="LucaImage\Artist\10.jpg" />
-    <Content Include="LucaImage\Artist\11.jpg" />
-    <Content Include="LucaImage\Artist\12.jpg" />
-    <Content Include="LucaImage\Artist\13.jpg" />
-    <Content Include="LucaImage\Artist\14.jpg" />
-    <Content Include="LucaImage\Artist\15.jpg" />
-    <Content Include="LucaImage\Artist\16.jpg" />
-    <Content Include="LucaImage\Artist\2.jpg" />
-    <Content Include="LucaImage\Artist\3.jpg" />
-    <Content Include="LucaImage\Artist\4.jpg" />
-    <Content Include="LucaImage\Artist\5.jpg" />
-    <Content Include="LucaImage\Artist\6.jpg" />
-    <Content Include="LucaImage\Artist\7.jpg" />
-    <Content Include="LucaImage\Artist\8.jpg" />
-    <Content Include="LucaImage\Artist\9.jpg" />
-    <Content Include="LucaImage\Arts\1.jpg" />
-    <Content Include="LucaImage\Arts\10.jpg" />
-    <Content Include="LucaImage\Arts\11.jpg" />
-    <Content Include="LucaImage\Arts\12.jpg" />
-    <Content Include="LucaImage\Arts\13.jpg" />
-    <Content Include="LucaImage\Arts\14.jpg" />
-    <Content Include="LucaImage\Arts\15.jpg" />
-    <Content Include="LucaImage\Arts\16.jpg" />
-    <Content Include="LucaImage\Arts\17.jpg" />
-    <Content Include="LucaImage\Arts\18.jpg" />
-    <Content Include="LucaImage\Arts\2.jpg" />
-    <Content Include="LucaImage\Arts\3.jpg" />
-    <Content Include="LucaImage\Arts\4.jpg" />
-    <Content Include="LucaImage\Arts\5.jpg" />
-    <Content Include="LucaImage\Arts\6.jpg" />
-    <Content Include="LucaImage\Arts\9.jpg" />
-    <Content Include="LucaImage\BootStrapImage\background.png" />
-    <Content Include="LucaImage\BootStrapImage\background2.png" />
-    <Content Include="LucaImage\BootStrapImage\background3.png" />
-    <Content Include="LucaImage\BootStrapImage\bootstrap2.png" />
-    <Content Include="LucaImage\BootStrapImage\desk.png" />
-    <Content Include="LucaImage\BootStrapImage\gif\chicken.gif" />
-    <Content Include="LucaImage\BootStrapImage\gif\panda.gif" />
-    <Content Include="LucaImage\BootStrapImage\gif\poo.gif" />
-    <Content Include="LucaImage\BootStrapImage\gif\unicorn.gif" />
-    <Content Include="LucaImage\BootStrapImage\JojoLogo.PNG" />
-    <Content Include="LucaImage\BootStrapImage\JojoLogoArtist.png" />
-    <Content Include="LucaImage\BootStrapImage\logo.png" />
-    <Content Include="LucaImage\BootStrapImage\mac.png" />
-    <Content Include="LucaImage\BootStrapImage\team1.png" />
-    <Content Include="LucaImage\BootStrapImage\team2.png" />
-    <Content Include="LucaImage\BootStrapImage\team3.png" />
-    <Content Include="LucaImage\BootStrapImage\w3newbie.png" />
-    <Content Include="Pics\2020monalisa.jpg" />
-    <Content Include="Pics\beanlisa.jpg" />
-    <Content Include="Pics\img_320593.png" />
-    <Content Include="Pics\jojolisa.png" />
-    <Content Include="Pics\lisa.jpg" />
-    <Content Include="Pics\mona lisa.jpg" />
-    <Content Include="Pics\pepe lisa.jpg" />
     <Content Include="Register.aspx" />
-    <None Include="Resources\Back.jpg" />
     <Content Include="Register2.aspx" />
     <Content Include="Register3.aspx" />
     <Content Include="RegisterSuccessful.aspx" />
-    <None Include="Resources\Success.JPG" />
+    <None Include="Image\Success.JPG" />
     <Content Include="Servicer\ServicerEditProfile.aspx" />
-    <Content Include="Servicer\ServicerHomepage.aspx" />
     <Content Include="Servicer\ServicerViewProfile.aspx" />
     <Content Include="style.css" />
+    <Content Include="TermOfUse.aspx" />
+    <Content Include="ViewProfile.css" />
+    <Content Include="ViewRequestStatus.css" />
+    <Content Include="ViewServicerDetails.css" />
+    <Content Include="ViewServicerReviews.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -223,12 +308,380 @@
     <Compile Include="BackendHeader.ascx.designer.cs">
       <DependentUpon>BackendHeader.ascx</DependentUpon>
     </Compile>
+    <Compile Include="BackendUser\BackendReport.aspx.cs">
+      <DependentUpon>BackendReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\BackendReport.aspx.designer.cs">
+      <DependentUpon>BackendReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\ClientPayment.aspx.cs">
+      <DependentUpon>ClientPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\ClientPayment.aspx.designer.cs">
+      <DependentUpon>ClientPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\SalesTransactionReport.aspx.cs">
+      <DependentUpon>SalesTransactionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\SalesTransactionReport.aspx.designer.cs">
+      <DependentUpon>SalesTransactionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\SalesTransactionReportSetting.aspx.cs">
+      <DependentUpon>SalesTransactionReportSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\SalesTransactionReportSetting.aspx.designer.cs">
+      <DependentUpon>SalesTransactionReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\ServicerWithdrawal.aspx.cs">
+      <DependentUpon>ServicerWithdrawal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\ServicerWithdrawal.aspx.designer.cs">
+      <DependentUpon>ServicerWithdrawal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\SubscriptionRequest.aspx.cs">
+      <DependentUpon>SubscriptionRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\SubscriptionRequest.aspx.designer.cs">
+      <DependentUpon>SubscriptionRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\SubscriptionVolumeReport.aspx.cs">
+      <DependentUpon>SubscriptionVolumeReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\SubscriptionVolumeReport.aspx.designer.cs">
+      <DependentUpon>SubscriptionVolumeReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\UserTypeRatioAnalysisReport.aspx.cs">
+      <DependentUpon>UserTypeRatioAnalysisReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\UserTypeRatioAnalysisReport.aspx.designer.cs">
+      <DependentUpon>UserTypeRatioAnalysisReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\CancelService.aspx.cs">
+      <DependentUpon>CancelService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\CancelService.aspx.designer.cs">
+      <DependentUpon>CancelService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientHomePage.aspx.cs">
+      <DependentUpon>ClientHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientHomePage.aspx.designer.cs">
+      <DependentUpon>ClientHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientViewReport.aspx.cs">
+      <DependentUpon>ClientViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ClientViewReport.aspx.designer.cs">
+      <DependentUpon>ClientViewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\DisplayService.aspx.cs">
+      <DependentUpon>DisplayService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\DisplayService.aspx.designer.cs">
+      <DependentUpon>DisplayService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\DisplayServiceDetails.aspx.cs">
+      <DependentUpon>DisplayServiceDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\DisplayServiceDetails.aspx.designer.cs">
+      <DependentUpon>DisplayServiceDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\EditProfile.aspx.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\EditProfile.aspx.designer.cs">
+      <DependentUpon>EditProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\Favourite.aspx.cs">
+      <DependentUpon>Favourite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\Favourite.aspx.designer.cs">
+      <DependentUpon>Favourite.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentDetails.aspx.cs">
+      <DependentUpon>PaymentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentDetails.aspx.designer.cs">
+      <DependentUpon>PaymentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentList.aspx.cs">
+      <DependentUpon>PaymentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentList.aspx.designer.cs">
+      <DependentUpon>PaymentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentMethodSelectionClient.aspx.cs">
+      <DependentUpon>PaymentMethodSelectionClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentMethodSelectionClient.aspx.designer.cs">
+      <DependentUpon>PaymentMethodSelectionClient.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentSuccess.aspx.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PaymentSuccess.aspx.designer.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PayService.aspx.cs">
+      <DependentUpon>PayService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PayService.aspx.designer.cs">
+      <DependentUpon>PayService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PayServiceBankTransfer.aspx.cs">
+      <DependentUpon>PayServiceBankTransfer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PayServiceBankTransfer.aspx.designer.cs">
+      <DependentUpon>PayServiceBankTransfer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PostServiceRequest.aspx.cs">
+      <DependentUpon>PostServiceRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\PostServiceRequest.aspx.designer.cs">
+      <DependentUpon>PostServiceRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\RecentTransaction.aspx.cs">
+      <DependentUpon>RecentTransaction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\RecentTransaction.aspx.designer.cs">
+      <DependentUpon>RecentTransaction.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\RequestOfferedService.aspx.cs">
+      <DependentUpon>RequestOfferedService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\RequestOfferedService.aspx.designer.cs">
+      <DependentUpon>RequestOfferedService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\RequestStatusList.aspx.cs">
+      <DependentUpon>RequestStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\RequestStatusList.aspx.designer.cs">
+      <DependentUpon>RequestStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ReviewService.aspx.cs">
+      <DependentUpon>ReviewService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ReviewService.aspx.designer.cs">
+      <DependentUpon>ReviewService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ServiceRequestReport.aspx.cs">
+      <DependentUpon>ServiceRequestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ServiceRequestReport.aspx.designer.cs">
+      <DependentUpon>ServiceRequestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ServiceRequestReportSetting.aspx.cs">
+      <DependentUpon>ServiceRequestReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ServiceRequestReportSetting.aspx.designer.cs">
+      <DependentUpon>ServiceRequestReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\TransactionReport.aspx.cs">
+      <DependentUpon>TransactionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\TransactionReport.aspx.designer.cs">
+      <DependentUpon>TransactionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\TransactionReportSetting.aspx.cs">
+      <DependentUpon>TransactionReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\TransactionReportSetting.aspx.designer.cs">
+      <DependentUpon>TransactionReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewProfile.aspx.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewProfile.aspx.designer.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewRequestStatus.aspx.cs">
+      <DependentUpon>ViewRequestStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewRequestStatus.aspx.designer.cs">
+      <DependentUpon>ViewRequestStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewServicerDetails.aspx.cs">
+      <DependentUpon>ViewServicerDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewServicerDetails.aspx.designer.cs">
+      <DependentUpon>ViewServicerDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewServicerReviews.aspx.cs">
+      <DependentUpon>ViewServicerReviews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewServicerReviews.aspx.designer.cs">
+      <DependentUpon>ViewServicerReviews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewTransactionDetails.aspx.cs">
+      <DependentUpon>ViewTransactionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Client\ViewTransactionDetails.aspx.designer.cs">
+      <DependentUpon>ViewTransactionDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PrivacyPolicy.aspx.cs">
+      <DependentUpon>PrivacyPolicy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrivacyPolicy.aspx.designer.cs">
+      <DependentUpon>PrivacyPolicy.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\AnnualServiceAnalysisReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AnnualServiceAnalysisReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CustomerReviewReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CustomerReviewReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SalesTransactionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalesTransactionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ServiceDetailsReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceDetailsReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\ServiceRequestReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceRequestReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\SubscriptionVolumeReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SubscriptionVolumeReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TransactionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\UserTypeRatioAnalysisReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserTypeRatioAnalysisReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\WalletTransactionReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WalletTransactionReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Servicer\AnnualServiceAnalysisReport.aspx.cs">
+      <DependentUpon>AnnualServiceAnalysisReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\AnnualServiceAnalysisReport.aspx.designer.cs">
+      <DependentUpon>AnnualServiceAnalysisReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\AnnualServiceAnalysisReportSetting.aspx.cs">
+      <DependentUpon>AnnualServiceAnalysisReportSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\AnnualServiceAnalysisReportSetting.aspx.designer.cs">
+      <DependentUpon>AnnualServiceAnalysisReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\CreditWithdraw.aspx.cs">
+      <DependentUpon>CreditWithdraw.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\CreditWithdraw.aspx.designer.cs">
+      <DependentUpon>CreditWithdraw.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Servicer\CurrentServing.aspx.cs">
       <DependentUpon>CurrentServing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Servicer\CurrentServing.aspx.designer.cs">
       <DependentUpon>CurrentServing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\CurrentServingList.aspx.cs">
+      <DependentUpon>CurrentServingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\CurrentServingList.aspx.designer.cs">
+      <DependentUpon>CurrentServingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\CustomerReviewReport.aspx.cs">
+      <DependentUpon>CustomerReviewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\CustomerReviewReport.aspx.designer.cs">
+      <DependentUpon>CustomerReviewReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\DirectRequest.aspx.cs">
+      <DependentUpon>DirectRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\DirectRequest.aspx.designer.cs">
+      <DependentUpon>DirectRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\EditService.aspx.cs">
+      <DependentUpon>EditService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\EditService.aspx.designer.cs">
+      <DependentUpon>EditService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\MyRanking.aspx.cs">
+      <DependentUpon>MyRanking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\MyRanking.aspx.designer.cs">
+      <DependentUpon>MyRanking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\MyService.aspx.cs">
+      <DependentUpon>MyService.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\MyService.aspx.designer.cs">
+      <DependentUpon>MyService.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\MySubscription.aspx.cs">
+      <DependentUpon>MySubscription.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\MySubscription.aspx.designer.cs">
+      <DependentUpon>MySubscription.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\PayByBankTransfer.aspx.cs">
+      <DependentUpon>PayByBankTransfer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\PayByBankTransfer.aspx.designer.cs">
+      <DependentUpon>PayByBankTransfer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\PaymentMethodSelection.aspx.cs">
+      <DependentUpon>PaymentMethodSelection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\PaymentMethodSelection.aspx.designer.cs">
+      <DependentUpon>PaymentMethodSelection.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicer\PostService.aspx.cs">
       <DependentUpon>PostService.aspx</DependentUpon>
@@ -244,6 +697,20 @@
     <Compile Include="Servicer\RequestList.aspx.designer.cs">
       <DependentUpon>RequestList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Servicer\ServiceDetailsReport.aspx.cs">
+      <DependentUpon>ServiceDetailsReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ServiceDetailsReport.aspx.designer.cs">
+      <DependentUpon>ServiceDetailsReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ServiceDetailsReportSetting.aspx.cs">
+      <DependentUpon>ServiceDetailsReportSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ServiceDetailsReportSetting.aspx.designer.cs">
+      <DependentUpon>ServiceDetailsReportSetting.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Servicer\ServiceHistory.aspx.cs">
       <DependentUpon>ServiceHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,12 +718,26 @@
     <Compile Include="Servicer\ServiceHistory.aspx.designer.cs">
       <DependentUpon>ServiceHistory.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Servicer\SignOut1.aspx.cs">
-      <DependentUpon>SignOut1.aspx</DependentUpon>
+    <Compile Include="Servicer\ServicerWallet.aspx.cs">
+      <DependentUpon>ServicerWallet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Servicer\SignOut1.aspx.designer.cs">
-      <DependentUpon>SignOut1.aspx</DependentUpon>
+    <Compile Include="Servicer\ServicerWallet.aspx.designer.cs">
+      <DependentUpon>ServicerWallet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BackendUser\SubscriptionVolumeReportSetting.aspx.cs">
+      <DependentUpon>SubscriptionVolumeReportSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BackendUser\SubscriptionVolumeReportSetting.aspx.designer.cs">
+      <DependentUpon>SubscriptionVolumeReportSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Servicer\ViewReport.aspx.cs">
+      <DependentUpon>ViewReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\ViewReport.aspx.designer.cs">
+      <DependentUpon>ViewReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Servicer\ViewRequest.aspx.cs">
       <DependentUpon>ViewRequest.aspx</DependentUpon>
@@ -265,6 +746,14 @@
     <Compile Include="Servicer\ViewRequest.aspx.designer.cs">
       <DependentUpon>ViewRequest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Servicer\WalletTransactionReport.aspx.cs">
+      <DependentUpon>WalletTransactionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Servicer\WalletTransactionReport.aspx.designer.cs">
+      <DependentUpon>WalletTransactionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="StaffLogin.aspx.cs">
       <DependentUpon>StaffLogin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -338,13 +827,6 @@
     <Compile Include="ServicerHeader.ascx.designer.cs">
       <DependentUpon>ServicerHeader.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Client\ClientHomepage.aspx.cs">
-      <DependentUpon>ClientHomepage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Client\ClientHomepage.aspx.designer.cs">
-      <DependentUpon>ClientHomepage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ClientHeader.ascx.cs">
       <DependentUpon>ClientHeader.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -407,13 +889,6 @@
     <Compile Include="Servicer\ServicerEditProfile.aspx.designer.cs">
       <DependentUpon>ServicerEditProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Servicer\ServicerHomepage.aspx.cs">
-      <DependentUpon>ServicerHomepage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Servicer\ServicerHomepage.aspx.designer.cs">
-      <DependentUpon>ServicerHomepage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Servicer\ServicerViewProfile.aspx.cs">
       <DependentUpon>ServicerViewProfile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -428,10 +903,25 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
+    <Compile Include="TermOfUse.aspx.cs">
+      <DependentUpon>TermOfUse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TermOfUse.aspx.designer.cs">
+      <DependentUpon>TermOfUse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\Common.cs" />
+    <Compile Include="Utilities\Configuration.cs" />
+    <Compile Include="Utilities\RequestFlow.cs" />
+    <Compile Include="Utilities\RequestFlowItem.cs" />
+    <Compile Include="Utilities\SampleCategory.cs" />
+    <Compile Include="Utilities\SampleItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <None Include="Properties\PublishProfiles\SpeedServServiceProviding.pubxml" />
+    <None Include="Properties\PublishProfiles\speedservVM.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -444,9 +934,51 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\AnnualServiceAnalysisReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AnnualServiceAnalysisReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CustomerReviewReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CustomerReviewReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SalesTransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalesTransactionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ServiceDetailsReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ServiceDetailsReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\ServiceRequestReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ServiceRequestReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\SubscriptionVolumeReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SubscriptionVolumeReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>TransactionReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\UserTypeRatioAnalysisReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>UserTypeRatioAnalysisReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\WalletTransactionReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>WalletTransactionReport.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Payment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

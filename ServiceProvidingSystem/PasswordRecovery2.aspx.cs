@@ -14,8 +14,8 @@ namespace ServiceProvidingSystem
 {
     public partial class PasswordRecovery2 : System.Web.UI.Page
     {
-
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        //setup SQL connection
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -65,7 +65,7 @@ namespace ServiceProvidingSystem
                 emailAddress = Session["emailAddress"].ToString();
             }
             MailAddress to = new MailAddress(emailAddress);
-            MailAddress from = new MailAddress("speedservofficial@gmail.com");
+            MailAddress from = new MailAddress("speedservofficial2021@outlook.com");
 
             MailMessage message = new MailMessage(from, to);
 
@@ -77,9 +77,9 @@ namespace ServiceProvidingSystem
                            "<b>" + randomNumber.ToString() + "</b>" +
                            "<br /><br />Please do not reply to this email.";
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+            SmtpClient client = new SmtpClient("smtp.live.com", 587)
             {
-                Credentials = new NetworkCredential("speedservofficial@gmail.com", "speedserv123"),
+                Credentials = new NetworkCredential("speedservofficial2021@outlook.com", "speedserv123"),
                 EnableSsl = true
             };
             // code in brackets above needed if authentication required 
@@ -93,6 +93,7 @@ namespace ServiceProvidingSystem
                 Console.WriteLine(ex.ToString());
             }
         }
+
 
         protected void btnNext_Click(object sender, EventArgs e)
         {

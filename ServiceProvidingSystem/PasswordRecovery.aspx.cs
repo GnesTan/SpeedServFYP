@@ -12,7 +12,8 @@ namespace ServiceProvidingSystem
 {
     public partial class PasswordRecovery : System.Web.UI.Page
     {
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        //setup SQL connection
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -35,17 +36,32 @@ namespace ServiceProvidingSystem
             int emailExistClient = 0;
 
             con.Open();
-
-            //retrieve data
-
-
-            SqlCommand check_servicer_email = new SqlCommand("SELECT COUNT(*) FROM Servicer WHERE (email_address = @email)", con);
-            check_servicer_email.Parameters.AddWithValue("@email", emailAddress);
-            emailExistServicer += (int)check_servicer_email.ExecuteScalar();
-
-            con.Close();
+            try
+            {
+                //retrieve data
 
 
+                SqlCommand check_servicer_email = new SqlCommand("SELECT COUNT(*) FROM Servicer WHERE (email_address = @email)", con);
+                check_servicer_email.Parameters.AddWithValue("@email", emailAddress);
+                emailExistServicer += (int)check_servicer_email.ExecuteScalar();
+
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            
             if (emailExistServicer > 0)
             {
                 //mark the user is servicer
@@ -53,33 +69,60 @@ namespace ServiceProvidingSystem
 
                 //get user's name
                 con.Open();
-
-                //retrieve data
-                String strAdd = "SELECT * FROM Servicer WHERE email_address = @email;";
-
-                SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-                cmdAdd.Parameters.AddWithValue("@email", emailAddress);
-                SqlDataReader dataReader;
-                dataReader = cmdAdd.ExecuteReader();
-                while (dataReader.Read())
+                try
                 {
-                    fullName = dataReader["full_name"].ToString();
-                }
+                    //retrieve data
+                    String strSelect = "SELECT * FROM Servicer WHERE email_address = @email;";
 
-                con.Close();
+                    SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                    cmdSelect.Parameters.AddWithValue("@email", emailAddress);
+                    SqlDataReader dataReader;
+                    dataReader = cmdSelect.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        fullName = dataReader["full_name"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (ex != null)
+                    {
+                        String message = ex.Message;
+                        Application["ErrorMessage"] = message;
+                    }
+                    Application["ErrorCode"] = " ";
+                    Response.Redirect("~/ErrorPage.aspx");
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
 
 
             con.Open();
+            try
+            {
+                //retrieve data
+                SqlCommand check_client_email = new SqlCommand("SELECT COUNT(*) FROM Client WHERE (email_address = @email)", con);
+                check_client_email.Parameters.AddWithValue("@email", emailAddress);
+                emailExistClient += (int)check_client_email.ExecuteScalar();
 
-            //retrieve data
-
-
-            SqlCommand check_client_email = new SqlCommand("SELECT COUNT(*) FROM Client WHERE (email_address = @email)", con);
-            check_client_email.Parameters.AddWithValue("@email", emailAddress);
-            emailExistClient += (int)check_client_email.ExecuteScalar();
-
-            con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
+            }
 
             if (emailExistClient > 0)
             {
@@ -88,20 +131,37 @@ namespace ServiceProvidingSystem
 
                 //get user's name
                 con.Open();
-
-                //retrieve data
-                String strAdd = "SELECT * FROM Client WHERE email_address = @email;";
-
-                SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-                cmdAdd.Parameters.AddWithValue("@email", emailAddress);
-                SqlDataReader dataReader;
-                dataReader = cmdAdd.ExecuteReader();
-                while (dataReader.Read())
+                try
                 {
-                    fullName = dataReader["full_name"].ToString();
-                }
 
-                con.Close();
+                    //retrieve data
+                    String strSelect = "SELECT * FROM Client WHERE email_address = @email;";
+
+                    SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                    cmdSelect.Parameters.AddWithValue("@email", emailAddress);
+                    SqlDataReader dataReader;
+                    dataReader = cmdSelect.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        fullName = dataReader["full_name"].ToString();
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex != null)
+                    {
+                        String message = ex.Message;
+                        Application["ErrorMessage"] = message;
+                    }
+                    Application["ErrorCode"] = " ";
+                    Response.Redirect("~/ErrorPage.aspx");
+                }
+                finally
+                {
+                    con.Close();
+                }
             }
 
 

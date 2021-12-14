@@ -6,17 +6,23 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace ServiceProvidingSystem.BackendUser
 {
     public partial class AccountMaintenance : System.Web.UI.Page
     {
+        //setup SQL connection
+        String table = "Back_end_User";
+
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
+
+        SqlConnection con = new SqlConnection(str);
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
             {
-
+                //to verify backend user login credential
                 String userType = "";
 
                 if (Session["userType"] != null)
@@ -38,21 +44,34 @@ namespace ServiceProvidingSystem.BackendUser
         }
         private void BindGrid()
         {
-            SqlConnection con;
-            String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
-            con = new SqlConnection(str);
             con.Open();
-            //retrieve data
-            String strSelect = "SELECT * FROM Back_end_User";
-            SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+            try
+            {
+                //retrieve data
+                String strSelect = "SELECT * FROM " + table + ";";
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
 
-            SqlDataReader dtrProd = cmdSelect.ExecuteReader();
+                SqlDataReader dtrProd = cmdSelect.ExecuteReader();
 
 
-            Repeater1.DataSource = dtrProd;
-            Repeater1.DataBind();
-            
-            con.Close();
+                Repeater1.DataSource = dtrProd;
+                Repeater1.DataBind();
+
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
+            }
         }
 
         protected void btnEdit_Click(object sender, EventArgs e)
@@ -116,7 +135,7 @@ namespace ServiceProvidingSystem.BackendUser
                 {
                     //execute delete query to delete selected account
                     string query = "DELETE FROM Back_end_User WHERE USERNAME = @USERNAME";
-                    string constr = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+                    string constr = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
                     using (SqlConnection con = new SqlConnection(constr))
                     {
                         using (SqlCommand cmd = new SqlCommand(query))

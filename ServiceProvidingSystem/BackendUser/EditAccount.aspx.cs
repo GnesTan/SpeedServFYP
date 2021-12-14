@@ -6,15 +6,16 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Data;
+
 
 namespace ServiceProvidingSystem.BackendUser
 {
     public partial class EditAccount : System.Web.UI.Page
     {
+        //setup SQL connection
         String table = "Back_end_User";
 
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -23,7 +24,7 @@ namespace ServiceProvidingSystem.BackendUser
         {
             if (!IsPostBack)
             {
-
+                //to verify backend user login credential
                 String userType = "";
 
                 if (Session["userType"] != null)
@@ -43,6 +44,7 @@ namespace ServiceProvidingSystem.BackendUser
                 String strFullname = "";
                 String strPassword = "";
 
+                //get username selected by user
                 if(Session["selectedUsername"] != null)
                 {
                     selectedUsername = Session["selectedUsername"].ToString();
@@ -51,22 +53,39 @@ namespace ServiceProvidingSystem.BackendUser
 
                 //check from admin database
                 con.Open();
-
-                //retrieve data
-                String strAdd = "SELECT * FROM Back_end_User WHERE USERNAME = @USERNAME;";
-
-                SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-                cmdAdd.Parameters.AddWithValue("@USERNAME", selectedUsername);
-                SqlDataReader dataReader;
-                dataReader = cmdAdd.ExecuteReader();
-                while (dataReader.Read())
+                try
                 {
-                    strFullname = dataReader["FULL_NAME"].ToString();
-                    strPassword = dataReader["PASSWORD"].ToString();
+
+                    //retrieve data
+                    String strAdd = "SELECT * FROM Back_end_User WHERE USERNAME = @USERNAME;";
+
+                    SqlCommand cmdAdd = new SqlCommand(strAdd, con);
+                    cmdAdd.Parameters.AddWithValue("@USERNAME", selectedUsername);
+                    SqlDataReader dataReader;
+                    dataReader = cmdAdd.ExecuteReader();
+                    while (dataReader.Read())
+                    {
+                        strFullname = dataReader["FULL_NAME"].ToString();
+                        strPassword = dataReader["PASSWORD"].ToString();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex != null)
+                    {
+                        String message = ex.Message;
+                        Application["ErrorMessage"] = message;
+                    }
+                    Application["ErrorCode"] = " ";
+                    Response.Redirect("~/ErrorPage.aspx");
+                }
+                finally
+                {
+                    con.Close();
                 }
 
-                con.Close();
-
+                //place all record to textfield
                 txtUsername.Text = selectedUsername;
                 txtName.Text = strFullname;
                 txtPassword.Attributes["value"] = strPassword;
@@ -85,6 +104,7 @@ namespace ServiceProvidingSystem.BackendUser
 
         protected void btnConfirm_Click(object sender, EventArgs e)
         {
+            //get input from textfield
             String strFullname = "";
             String strPassword = "";
 
@@ -93,7 +113,7 @@ namespace ServiceProvidingSystem.BackendUser
 
 
 
-
+            //update user info
             con.Open();
 
             try
@@ -106,15 +126,15 @@ namespace ServiceProvidingSystem.BackendUser
                     selectedUsername = Session["selectedUsername"].ToString();
                 }
 
-                //retrieve data
-                String strAdd = "UPDATE " + table + " SET FULL_NAME = @FULL_NAME, PASSWORD = @PASSWORD WHERE USERNAME = @USERNAME;";
+                //update data
+                String strUpdate = "UPDATE " + table + " SET FULL_NAME = @FULL_NAME, PASSWORD = @PASSWORD WHERE USERNAME = @USERNAME;";
                 
-                SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-                cmdAdd.Parameters.AddWithValue("@FULL_NAME", strFullname);
-                cmdAdd.Parameters.AddWithValue("@PASSWORD", strPassword);
-                cmdAdd.Parameters.AddWithValue("@USERNAME", selectedUsername);
+                SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
+                cmdUpdate.Parameters.AddWithValue("@FULL_NAME", strFullname);
+                cmdUpdate.Parameters.AddWithValue("@PASSWORD", strPassword);
+                cmdUpdate.Parameters.AddWithValue("@USERNAME", selectedUsername);
 
-                cmdAdd.ExecuteNonQuery();
+                cmdUpdate.ExecuteNonQuery();
 
                 con.Close();
 

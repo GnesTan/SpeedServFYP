@@ -1,0 +1,252 @@
+﻿
+/*----------------------------
+    General
+----------------------------*/
+:root {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    background-color: white;
+}
+
+a {
+    font-family: 'PT Sans', sans-serif;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'PT Sans', sans-serif;
+}
+
+/*----------------------------
+    Section
+----------------------------*/
+section {
+    padding: 60px 0;
+    overflow: hidden;
+}
+
+.section-header {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+    .section-header h2 {
+        font-size: 13px;
+        letter-spacing: 1px;
+        font-weight: 700;
+        margin: 0;
+        text-transform: uppercase;
+    }
+
+    .section-header p {
+        margin: 10px 0 0 0;
+        padding: 0;
+        font-size: 38px;
+        line-height: 42px;
+        font-weight: 700;
+    }
+
+        .section-header p span {
+            margin: 10px 0 0 0;
+            padding: 0;
+            font-size: 38px;
+            line-height: 42px;
+            font-weight: 700;
+            color: #FE5959;
+        }
+
+/*----------------------------
+Disable AOS delay on mobile
+----------------------------*/
+@media screen and (max-width: 768px) {
+    [data-aos-delay] {
+        transition-delay: 0 !important;
+    }
+}
+/*----------------------------
+    Header
+----------------------------*/
+.header {
+    transition: all 0.5s;
+    z-index: 997;
+    padding: 20px 0;
+}
+
+    .header.header-scrolled {
+        background: #fff;
+        padding: 15px 0;
+        box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
+    }
+
+    .header .logo {
+        line-height: 0;
+    }
+
+        .header .logo i {
+            font-size: 35px;
+            color: #FE5959;
+        }
+
+        .header .logo img {
+            max-height: 40px;
+            margin-right: 6px;
+            font-weight: 600;
+        }
+
+        .header .logo span {
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #000000;
+            font-family: 'PT Sans', sans-serif;
+            margin-top: 3px;
+        }
+
+/*----------------------------
+    Nav 
+----------------------------*/
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li {
+    position: relative;
+}
+
+.navbar a, .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px 10px 40px;
+    font-family: "PT Sans", sans-serif;
+    font-size: 18px;
+    font-weight: normal;
+    color: #595959;
+    white-space: nowrap;
+}
+
+    .navbar a i, .navbar a:focus i {
+        font-size: 16px;
+        line-height: 0;
+        margin-left: 7px;
+    }
+
+    .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
+        color: #FE5959;
+        font-weight: 600;
+        transition: 0.1s;
+    }
+
+.navbar .getstarted, .navbar .getstarted:focus {
+    background: #FE5959;
+    padding: 8px 20px;
+    margin-left: 30px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    padding: 13px 20px 13px 20px;
+}
+
+    .navbar .getstarted:hover, .navbar .getstarted:focus:hover {
+        color: #FFFFFF;
+        background: #FF7E7E;
+    }
+
+.navbar .dropdown ul {
+    display: block;
+    position: absolute;
+    font-family: "PT Sans", sans-serif;
+    left: 14px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    transition: 0.2s;
+    border-radius: 4px;
+}
+
+    .navbar .dropdown ul li {
+        min-width: 200px;
+    }
+
+    .navbar .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 18px;
+        text-transform: none;
+        font-weight: normal;
+    }
+
+        .navbar .dropdown ul a i {
+            font-size: 12px;
+        }
+
+        .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
+            color: #FE5959;
+        }
+
+.navbar .dropdown:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+}
+
+.navbar .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    visibility: hidden;
+}
+
+.navbar .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    visibility: visible;
+}
+
+.navbar .navname, .navbar .navname:focus {
+    color: #595959;
+    font-weight: normal;
+}
+
+    .navbar .navname:hover, .navbar .navname:focus:hover {
+        color: #595959;
+        font-weight: normal;
+    }
+/*----------------------------
+    Footer 
+----------------------------*/
+
+footer {
+    width: 100%;
+    height: 35vh;
+    box-shadow: 0px 0px 30px rgb(127 137 161 / 30%);
+}
+
+.footerlogo .footlogo i {
+    font-size: 25px;
+    color: #FE5959;
+}
+
+.footerlogo .footlogo span {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #000000;
+    font-family: 'PT Sans', sans-serif;
+    margin-top: 3px;
+}

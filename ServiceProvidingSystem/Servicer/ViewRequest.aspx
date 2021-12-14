@@ -6,10 +6,11 @@
         </asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-
+        <asp:Panel ID="WholePanel" runat="server">
         <div class="editForm">
         <br/>
         <br/>
+        
         <div class="topForm">
             <div class="profilePicForm">
                 <asp:image Height="90px" style="border-radius:100px; box-shadow: 0 0 0 3px #b3b3b3; text-decoration:none;" Width="90px" ImageAlign="Middle" ToolTip = "Profile Picture" ID="ProfilePic" runat="server" ImageUrl ="~/imgs/generaluser.png" ></asp:image>
@@ -101,11 +102,25 @@
 
                 <asp:Button ID="btnAccept" runat="server" class="btnNew btn-primary btn-lg" OnClick="btnAccept_Click" Text="Accept" CausesValidation="false" />
                 &nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btnCancel" runat="server" class="btnNew btn-secondary btn-lg" OnClick="btnCancel_Click" Text="Back" CausesValidation="false" />
+                <asp:Button ID="btnCancel" runat="server" class="btnNew btn-secondary btn-lg" PostBackUrl="~/Servicer/RequestList.aspx" Text="Back" CausesValidation="false" />
 
                 <br /><br />
 
-                <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="Only 1 service allowed to be accept and serv in the same time, please complete before accept for new service." Visible="false"></asp:Label>
+                <asp:Label ID="lblError" runat="server" ForeColor="Red" Text="Only 5 services allowed to be accept and serv in the same time, please complete before accept for new service." Visible="false"></asp:Label>
+
+            </div>
+
+            </asp:Panel>
+
+
+            <asp:Panel ID="DoneButtonPanel" runat="server" Visible="false">
+
+            <div class="btnClass">
+
+
+                <asp:Button ID="btnDoneBack" runat="server" class="btnNew btn-secondary btn-lg" PostBackUrl="~/Servicer/ServiceHistory.aspx" Text="Back" CausesValidation="false" />
+
+
 
             </div>
 
@@ -113,6 +128,33 @@
 
             <br />
         </div>
+        </asp:Panel>
+
+                      <asp:Panel ID="InputTimePanel" runat="server" Visible="false">
+                        <div class="noItemForm">
+                       <div class="noItemContainer">
+                           <u><h3>Estimate Completion Time</h3></u>
+                            <br />
+                            <br />
+                           <asp:Label ID="Label1" runat="server" Text="Hour & Minutes:"></asp:Label>
+                           <br />
+                            <asp:TextBox ID="txtFromHour" runat="server" Width="50px" MaxLength="2" Placeholder="HH" Text="0" TextMode="Number" min="0" max="99"></asp:TextBox><asp:RequiredFieldValidator style="color:red" ID="HourRequired" runat="server" ControlToValidate="txtFromHour" ErrorMessage="Hour is required." ToolTip="Hour is required." ValidationGroup="AcceptService">*</asp:RequiredFieldValidator>&nbsp&nbsp&nbsp&nbsp<asp:TextBox ID="txtFromMin" runat="server" Width="50px" MaxLength="2" Placeholder="mm" Text="15" TextMode="Number" min="1" max="59"></asp:TextBox><asp:RequiredFieldValidator style="color:red" ID="MinutesRequired" runat="server" ControlToValidate="txtFromMin" ErrorMessage="Minutes is required." ToolTip="Minutes is required." ValidationGroup="AcceptService">*</asp:RequiredFieldValidator> <br/><br/>
+                            <asp:RegularExpressionValidator style="color:red" runat="server" ID="FromHourPattern" ControlToValidate = "txtFromHour" ValidationExpression = "^\d+$" ErrorMessage="*Hour must be number." ValidationGroup="AcceptService"></asp:RegularExpressionValidator><br />
+                            <asp:RegularExpressionValidator style="color:red" runat="server" ID="FromMinPattern" ControlToValidate = "txtFromMin" ValidationExpression = "^\d+$" ErrorMessage="*Minute must be number." ValidationGroup="AcceptService"></asp:RegularExpressionValidator><br />
+                                       <asp:rangevalidator ID="Rangevalidator1" errormessage="*Please enter value between 1-59 for minutes." forecolor="Red" controltovalidate="txtFromMin" minimumvalue="1" maximumvalue="59" runat="server" Type="Integer" ValidationGroup="AcceptService"></asp:rangevalidator>
+                           
+                            <div class="btnClass">
+
+                            <asp:Button ID="btnConfirm" runat="server" class="btnNew btn-primary btn-lg" OnClick="btnConfirm_Click" Text="Confirm" ValidationGroup="AcceptService" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:Button ID="btnCancelInput" runat="server" class="btnNew btn-secondary btn-lg" OnClick="btnCancelInput_Click" Text="Back" CausesValidation="false" />
+
+                            </div>
+
+                       </div> 
+                        </div>
+
+                    </asp:Panel>
 
 
 
@@ -128,6 +170,11 @@ body{
     font-family: Arial, Helvetica, sans-serif;   
     background-color: #f2f2f2;      
 }
+
+    header{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        background: white;
+    }
 
 .topicName{
     margin: auto;
@@ -164,11 +211,11 @@ body{
     border-radius: 5px;    
     width: 60%;
     display: block;
-    margin-top: 30px;
+    margin-top: 140px;
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
-    height: 730px;  
+    min-height: 730px;  
 
 }
 
@@ -190,78 +237,68 @@ body{
     height:150px;
 }
 
-.mapForm{
-
-}
-
 .lineStyle{
     margin-left:5%;
     margin-left:5%;
 }
 
-.topContainer{
-    font-family: Arial, Helvetica, sans-serif;   
-    text-align: center;
-    font-size: 25px;
+.noItemForm{
     background-color: white;
-    width: 100%;
-    height: 220px;
-}
-
-.nav {
-  list-style-type: none;
-  display: inline-block;
-  text-align: center;
-  margin: 0;      
-}
-
-.ul {
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-    color: #c48e0e;
-}
-
-
-
-        /*---Button --*/
-        .btnNew{  
-          text-align:center;
-          width:100px;
-          background: none;
-          border: 3px solid;
-          border-radius: 10px;
-          color: #ffffff;
-          font-weight: 600;
-          cursor: pointer;
-          position: relative;
-          box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
-        }
-
-
-        .btn-primary {
-            background-color: #EF7E7E;
-            border: 1px solid #EF7E7E;
-        }
-
-        .btn-primary:hover {
-                background-color: #F68888;
-                border: 1px solid #F68888;
-        }
-
-        .btn-secondary {
-            background-color: #7B51F2;
-            border: 1px solid #7B51F2;
-        }
-
-        .btn-secondary:hover {
-                background-color: #8F6BF6;
-                border: 1px solid #8F6BF6;
-        }
-
-.textbox{
+    margin: auto;
+    box-shadow: 3px 3px 10px 0 #b3b3b3;
     border-radius: 5px;    
+    width: 40%;
+    display: block;
+    margin-top: 130px;
+    margin-bottom: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px; 
 }
+
+
+.noItemContainer {                                           
+    text-align: center;
+}
+
+
+
+
+/*---Button --*/
+.btnNew{  
+    text-align:center;
+    width:100px;
+    background: none;
+    border: 3px solid;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
+}
+
+
+.btn-primary {
+    background-color: #EF7E7E;
+    border: 1px solid #EF7E7E;
+}
+
+.btn-primary:hover {
+        background-color: #F68888;
+        border: 1px solid #F68888;
+}
+
+.btn-secondary {
+    background-color: #7B51F2;
+    border: 1px solid #7B51F2;
+}
+
+.btn-secondary:hover {
+        background-color: #8F6BF6;
+        border: 1px solid #8F6BF6;
+}
+
 
 input[type=text]:focus, input[type=password]:focus, input[type=date]:focus{
   outline: none;

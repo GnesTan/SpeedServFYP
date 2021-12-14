@@ -23,7 +23,7 @@
         <br /><br />
         <b>Here is an option for you :<br />
         </b><br /><br/>
-        <asp:LinkButton class="BackToHomeBtn" runat="server" PostBackUrl="Homepage.aspx">Visit SpeedServ Homepage</asp:LinkButton>
+        <asp:LinkButton class="BackToHomeBtn" runat="server" OnClick="btnHome_Click" >Visit SpeedServ Homepage</asp:LinkButton>
         </div>
     </form>
 </body>

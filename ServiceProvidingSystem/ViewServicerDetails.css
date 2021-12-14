@@ -1,0 +1,118 @@
+﻿
+.viewServDet {
+    width: 100%;
+    margin-top: 100px;
+}
+
+    .viewServDet .container {
+        padding: 20px 100px 20px 100px;
+    }
+
+    .viewServDet h3 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .viewServDet h4 {
+        font-size: 20px;
+        color: #7d7d7d;
+    }
+
+    .viewServDet h5 {
+        font-size: 16px;
+        color: #7d7d7d;
+    }
+
+    .viewServDet h3 span {
+        color: #FE5959;
+        font-weight: 700;
+        font-weight: 700;
+    }
+
+    .viewServDet .btn-find-now {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 25px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #FE5959;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+    .viewServDet .btnView {
+        margin-top: 10px;
+        margin-right: 20px;
+        line-height: 0;
+        padding: 25px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #7B51F2;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+    .viewServDet .btnContact {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 17px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #1BA100;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+    .viewServDet .btn-find-now span {
+        font-family: "PT Sans", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+
+    .viewServDet .btn-find-now i {
+        margin-left: 5px;
+        font-size: 18px;
+        transition: 0.3s;
+    }
+
+    .viewServDet .btn-find-now:hover i {
+        transform: translateX(5px);
+        font-size: 20px;
+        transition: transform .5s;
+    }
+
+    .viewServDet .btn-find-now span:hover {
+        font-weight: 600;
+        font-size: 22px;
+        transition: 0.2s;
+    }
+
+    .viewServDet .topline {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+.viewServDet {
+    margin-bottom: 3%;
+}
+
+    .viewServDet .reqDetailsLabel {
+        font-size: 20px;
+    }
+
+    .viewServDet .title {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .viewServDet .rateStar{
+        color: gold;
+        font-size: 22px;
+    }
+
+    .rateStar::before{
+        padding-bottom: 5px;
+    }

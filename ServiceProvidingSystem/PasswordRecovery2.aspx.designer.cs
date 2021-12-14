@@ -15,13 +15,13 @@ namespace ServiceProvidingSystem
     {
 
         /// <summary>
-        /// imgBack control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBack;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
         /// lblEmail control.
@@ -51,13 +51,13 @@ namespace ServiceProvidingSystem
         protected global::System.Web.UI.WebControls.RequiredFieldValidator PinNumberRequired;
 
         /// <summary>
-        /// lblInvalid control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInvalid;
+        protected global::System.Web.UI.WebControls.LinkButton btnCancel;
 
         /// <summary>
         /// btnNext control.
@@ -66,15 +66,15 @@ namespace ServiceProvidingSystem
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnNext;
+        protected global::System.Web.UI.WebControls.LinkButton btnNext;
 
         /// <summary>
-        /// btnCancel control.
+        /// lblInvalid control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.WebControls.Label lblInvalid;
     }
 }

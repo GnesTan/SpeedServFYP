@@ -1,0 +1,149 @@
+﻿.PayServBankTrans {
+    width: 100%;
+    margin-top: 100px;
+}
+
+    .PayServBankTrans .container {
+        padding: 20px 300px 20px 300px;
+    }
+
+    .PayServBankTrans h2 {
+        font-size: 32px;
+        font-weight: 200;
+        color: #545454;
+    }
+
+    .PayServBankTrans h3 {
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .PayServBankTrans h4 {
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .PayServBankTrans h5 {
+        font-size: 16px;
+        color: #7d7d7d;
+        padding-top: 8px;
+    }
+
+    .PayServBankTrans h3 span {
+        color: #FE5959;
+        font-weight: 700;
+        font-weight: 700;
+    }
+
+    .PayServBankTrans .btn-find-now {
+        margin-top: 10px;
+        margin-right: 1px;
+        line-height: 0;
+        padding: 25px 30px;
+        border-radius: 8px;
+        transition: 0.5s;
+        color: #fff;
+        background: #7B51F2;
+        box-shadow: 0px 5px 30px rgba(255, 0, 0, 0.2);
+    }
+
+        .PayServBankTrans .btn-find-now span {
+            font-family: "PT Sans", sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
+
+        .PayServBankTrans .btn-find-now i {
+            margin-left: 5px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .PayServBankTrans .btn-find-now:hover i {
+            transform: translateX(5px);
+            font-size: 20px;
+            transition: transform .5s;
+        }
+
+        .PayServBankTrans .btn-find-now span:hover {
+            font-weight: 600;
+            font-size: 22px;
+            transition: 0.2s;
+        }
+
+    .PayServBankTrans .btnReview {
+        margin-left: 20px;
+        background-color: #FE5959;
+    }
+
+    .PayServBankTrans .btnProceedPay {
+        margin-left: 20px;
+        background-color: #FE5959;
+    }
+
+    .PayServBankTrans .btnUpload {
+        margin-left: 20px;
+        background-color: #999999;
+        box-shadow: 0px 5px 30px rgba(153, 153, 153, 0.2);
+    }
+
+    .PayServBankTrans .topline {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        color: white;
+    }
+
+    .PayServBankTrans .name {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .PayServBankTrans .payDetails {
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .PayServBankTrans .bankDetails {
+        font-size: 20px;
+        font-weight: 600;
+        color: #5F5F5F;
+    }
+
+    .PayServBankTrans .total {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .PayServBankTrans .headTotal {
+        font-size: 38px;
+        font-weight: 700;
+    }
+
+    .PayServBankTrans .totalprice {
+        font-size: 20px;
+        color: #7d7d7d;
+        padding-top: 2px;
+        font-weight: 700;
+    }
+
+    .PayServBankTrans .earnedPoints {
+        color: green;
+    }
+
+    .PayServBankTrans .currentPointsLabel {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .PayServBankTrans .currentPoints {
+        font-weight: 700;
+    }
+
+.completeIcon {
+    font-size: 100px;
+    color: #009314;
+}
+
+#masterfooter {
+    display: none;
+}

@@ -12,9 +12,8 @@ namespace ServiceProvidingSystem
 {
     public partial class Register2 : System.Web.UI.Page
     {
-        String table = "Servicer";
-
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        //setup SQL connection
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -33,7 +32,6 @@ namespace ServiceProvidingSystem
             string conPassword = "";
 
             string strExist = "";
-            string strNotMatch = "";
 
             int errorCount = 0;
 
@@ -44,42 +42,68 @@ namespace ServiceProvidingSystem
             int emailExist = 0;
 
             con.Open();
+            try
+            {
+                //retrieve data
+                SqlCommand check_servicer_email = new SqlCommand("SELECT COUNT(*) FROM Servicer WHERE (email_address = @email)", con);
+                check_servicer_email.Parameters.AddWithValue("@email", emailAddress);
+                emailExist += (int)check_servicer_email.ExecuteScalar();
 
-            //retrieve data
-
-
-            SqlCommand check_servicer_email = new SqlCommand("SELECT COUNT(*) FROM Servicer WHERE (email_address = @email)", con);
-            check_servicer_email.Parameters.AddWithValue("@email", emailAddress);
-            emailExist += (int)check_servicer_email.ExecuteScalar();
-
-            con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
+            }
 
             con.Open();
+            try
+            {
+                //retrieve data
+                SqlCommand check_client_email = new SqlCommand("SELECT COUNT(*) FROM Client WHERE (email_address = @email)", con);
+                check_client_email.Parameters.AddWithValue("@email", emailAddress);
+                emailExist += (int)check_client_email.ExecuteScalar();
 
-            //retrieve data
 
-
-            SqlCommand check_client_email = new SqlCommand("SELECT COUNT(*) FROM Client WHERE (email_address = @email)", con);
-            check_client_email.Parameters.AddWithValue("@email", emailAddress);
-            emailExist += (int)check_client_email.ExecuteScalar();
-
-            con.Close();
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
+            }
 
 
             if (emailExist > 0)
             {
-                strExist = "Email entered already registered by another user, please try another email.";
-                lblEmailExist.Text = strExist;
+                strExist += "*Email entered already registered by another user, please try another email. <br/>";
                 errorCount += 1;
             }
 
             if (!password.Equals(conPassword))
             {
-                strNotMatch = "Password and Confirm Password are not matched, please try again.";
-                lblNotMatch.Text = strNotMatch;
+                strExist += "*Password and Confirm Password are not matched, please try again. <br/>";
                 errorCount += 1;
             }
 
+            lblError.Text = strExist;
 
             if (errorCount == 0)
             {

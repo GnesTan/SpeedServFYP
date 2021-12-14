@@ -1,19 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="CreateAccount.aspx.cs" Inherits="ServiceProvidingSystem.BackendUser.CreateAccount" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
 
-          <div class="topContainer"> 
-       <!-- Welcome Column Section -->
-         <div class="row welcome text-center">  
-         <div class="col-12">  
-            <div class="nav">                 
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/AddCloth.aspx" CausesValidation="false">Add Cloth</asp:LinkButton></div>
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/ViewCloth.aspx" CausesValidation="false">View Cloth</asp:LinkButton></div>
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/AccountMaintenance.aspx" CausesValidation="false">Account Maintenance</asp:LinkButton></div>             
-           </div>         
-         </div>
-         </div> 
-    </div>
-
         <div class="editForm">
         <div class="topicName">
        <b><u>Add User</u></b>
@@ -30,7 +17,7 @@
                     <br />
                 </td>
                 <td>
-                    <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtUsername" runat="server" MaxLength="30" ></asp:TextBox>
                     <asp:RequiredFieldValidator style="color:red" ID="UsernameRequired" runat="server" ControlToValidate="txtUsername" ErrorMessage="Username is required." ToolTip="Username is required." ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                 </td>
 
@@ -38,7 +25,7 @@
                     <asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" MaxLength="40"></asp:TextBox>
                     <asp:RequiredFieldValidator style="color:red" ID="PasswordRequired" runat="server" ControlToValidate="txtPassword" ErrorMessage="Password is required." ToolTip="Password is required." ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -65,7 +52,7 @@
                     <br />
                 </td>
                 <td>
-                    <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtName" runat="server" MaxLength="30"></asp:TextBox>
                     <asp:RequiredFieldValidator style="color:red" ID="NameRequired" runat="server" ControlToValidate="txtName" ErrorMessage="Name is required." ToolTip="Name is required." ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                 </td>
 
@@ -73,7 +60,7 @@
                     <asp:Label ID="lblConPass" runat="server" Text="Confirm Password"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtConPass" runat="server" TextMode="Password" ></asp:TextBox>
+                    <asp:TextBox ID="txtConPass" runat="server" TextMode="Password" MaxLength="40"></asp:TextBox>
                     <asp:RequiredFieldValidator style="color:red" ID="ConPassRequired" runat="server" ControlToValidate="txtConPass" ErrorMessage="Confirm Password is required." ToolTip="Confirm Password is required." ValidationGroup="CreateAccount">*</asp:RequiredFieldValidator>
                 </td>
             </tr>
@@ -117,6 +104,11 @@ body{
     background-color: #f2f2f2;      
 }
 
+    header{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        background: white;
+    }
+
 .topicName{
     margin: auto;
     font-size: 25px;
@@ -152,7 +144,7 @@ body{
     border-radius: 5px;    
     width: 80%;
     display: block;
-    margin-top: 30px;
+    margin-top: 150px;
     margin-bottom: 5%;
     margin-left: auto;
     margin-right: auto;
@@ -162,69 +154,48 @@ body{
 }
 
 
-.topContainer{
-    font-family: Arial, Helvetica, sans-serif;   
-    text-align: center;
-    font-size: 25px;
-    background-color: white;
-    width: 100%;
-    height: 220px;
-}
 
-.nav {
-  list-style-type: none;
-  display: inline-block;
-  text-align: center;
-  margin: 0;      
-}
 
-.ul {
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-    color: #c48e0e;
+
+
+
+
+/*---Button --*/
+.btnNew{  
+    text-align:center;
+    width:100px;
+    background: none;
+    border: 3px solid;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
 }
 
 
-
-        /*---Button --*/
-        .btnNew{  
-          text-align:center;
-          width:100px;
-          background: none;
-          border: 3px solid;
-          border-radius: 10px;
-          color: #ffffff;
-          font-weight: 600;
-          cursor: pointer;
-          position: relative;
-          box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
-        }
-
-
-        .btn-primary {
-            background-color: #EF7E7E;
-            border: 1px solid #EF7E7E;
-        }
-
-        .btn-primary:hover {
-                background-color: #F68888;
-                border: 1px solid #F68888;
-        }
-
-        .btn-secondary {
-            background-color: #7B51F2;
-            border: 1px solid #7B51F2;
-        }
-
-        .btn-secondary:hover {
-                background-color: #8F6BF6;
-                border: 1px solid #8F6BF6;
-        }
-
-.textbox{
-    border-radius: 5px;    
+.btn-primary {
+    background-color: #EF7E7E;
+    border: 1px solid #EF7E7E;
 }
+
+.btn-primary:hover {
+        background-color: #F68888;
+        border: 1px solid #F68888;
+}
+
+.btn-secondary {
+    background-color: #7B51F2;
+    border: 1px solid #7B51F2;
+}
+
+.btn-secondary:hover {
+        background-color: #8F6BF6;
+        border: 1px solid #8F6BF6;
+}
+
+
 
 input[type=text]:focus, input[type=password]:focus, input[type=date]:focus{
   outline: none;

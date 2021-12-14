@@ -15,8 +15,8 @@ namespace ServiceProvidingSystem
 {
     public partial class Register3 : System.Web.UI.Page
     {
-
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        //setup SQL connection
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
@@ -62,7 +62,7 @@ namespace ServiceProvidingSystem
                 emailAddress = Session["emailAddress"].ToString();
             }
             MailAddress to = new MailAddress(emailAddress);
-            MailAddress from = new MailAddress("speedservofficial@gmail.com");
+            MailAddress from = new MailAddress("speedservofficial2021@outlook.com");
 
             MailMessage message = new MailMessage(from, to);
 
@@ -75,9 +75,9 @@ namespace ServiceProvidingSystem
                            "<b>" + randomNumber.ToString() + "</b>" +
                            "<br /><br />Please do not reply to this email.";
 
-            SmtpClient client = new SmtpClient("smtp.gmail.com", 587)
+            SmtpClient client = new SmtpClient("smtp.live.com", 587)
             {
-                Credentials = new NetworkCredential("speedservofficial@gmail.com", "speedserv123"),
+                Credentials = new NetworkCredential("speedservofficial2021@outlook.com", "speedserv123"),
                 EnableSsl = true
             };
             // code in brackets above needed if authentication required 
@@ -96,7 +96,7 @@ namespace ServiceProvidingSystem
         {
             String pinEntered = txtPinNumber.Text;
 
-            
+
 
             if (pinEntered.Equals(randomNumber))
             {
@@ -107,33 +107,50 @@ namespace ServiceProvidingSystem
                     strUser = Session["RegisterUser"].ToString();
                 }
 
-                if(strUser.Equals("Servicer"))
+                if (strUser.Equals("Servicer"))
                 {
 
                     int newServicerId = 0;
 
                     con.Open();
-
-                    //retrieve data
-                    String strAdd = "SELECT * FROM Sequence WHERE sequence_id = 'default';";
-
-                    SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-                    SqlDataReader dataReader;
-                    dataReader = cmdAdd.ExecuteReader();
-                    while (dataReader.Read())
+                    try
                     {
-                        newServicerId = (int)dataReader["servicer_sequence"];
+                        //retrieve data
+                        String strSelect = "SELECT * FROM Sequence WHERE sequence_id = 'default';";
+
+                        SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                        SqlDataReader dataReader;
+                        dataReader = cmdSelect.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+                            newServicerId = (int)dataReader["servicer_sequence"];
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex != null)
+                        {
+                            String message = ex.Message;
+                            Application["ErrorMessage"] = message;
+                        }
+                        Application["ErrorCode"] = " ";
+                        Response.Redirect("~/ErrorPage.aspx");
+                    }
+                    finally
+                    {
+                        con.Close();
                     }
 
-                    con.Close();
 
-                    String strServicerId = "SR" + newServicerId.ToString("D" + 8);
+                    String strServicerId = "SV" + newServicerId.ToString("D" + 8);
                     String name = Session["name"].ToString();
                     String phoneNo = Session["phoneNo"].ToString();
                     String ic = Session["ic"].ToString();
                     String dob = Session["dob"].ToString();
                     String emailAddress = Session["emailAddress"].ToString();
                     String password = Session["password"].ToString();
+                    String profilePic = "/Image/generaluser.png";
 
 
 
@@ -143,22 +160,24 @@ namespace ServiceProvidingSystem
                     {
 
                         //create servicer account
-                        strAdd = "INSERT INTO Servicer (servicer_id, full_name, identity_no, date_of_birth, contact_no, email_address, password, available_points, collected_point, credit_balance, isActive, posted_service) VALUES (@servicer_id, @full_name, @identity_no, @date_of_birth, @contact_no, @email_address, @password, @available_points, @collected_point, @credit_balance, @isActive, @posted_service);";
+                        String strAdd = "INSERT INTO Servicer (servicer_id, full_name, identity_no, date_of_birth, contact_no, email_address, password, available_points, collected_point, credit_balance, isActive, posted_service, created_date, profile_picture) VALUES (@servicer_id, @full_name, @identity_no, @date_of_birth, @contact_no, @email_address, @password, @available_points, @collected_point, @credit_balance, @isActive, @posted_service, @created_date, @profile_picture);";
 
-                        cmdAdd = new SqlCommand(strAdd, con);
+                        SqlCommand cmdAdd = new SqlCommand(strAdd, con);
 
                         cmdAdd.Parameters.AddWithValue("@servicer_id", strServicerId);
                         cmdAdd.Parameters.AddWithValue("@full_name", name);
-                        cmdAdd.Parameters.AddWithValue("@identity_no", phoneNo);
-                        cmdAdd.Parameters.AddWithValue("@date_of_birth", ic);
-                        cmdAdd.Parameters.AddWithValue("@contact_no", dob);
+                        cmdAdd.Parameters.AddWithValue("@identity_no", ic);
+                        cmdAdd.Parameters.AddWithValue("@date_of_birth", dob);
+                        cmdAdd.Parameters.AddWithValue("@contact_no", phoneNo);
                         cmdAdd.Parameters.AddWithValue("@email_address", emailAddress);
                         cmdAdd.Parameters.AddWithValue("@password", password);
                         cmdAdd.Parameters.AddWithValue("@available_points", 0);
                         cmdAdd.Parameters.AddWithValue("@collected_point", 0);
                         cmdAdd.Parameters.AddWithValue("@credit_balance", 0.00);
-                        cmdAdd.Parameters.AddWithValue("@isActive", "N");
+                        cmdAdd.Parameters.AddWithValue("@isActive", "A");
                         cmdAdd.Parameters.AddWithValue("@posted_service", 0);
+                        cmdAdd.Parameters.AddWithValue("@created_date", DateTime.Now.ToString("dd/MM/yyyy HH:mm"));
+                        cmdAdd.Parameters.AddWithValue("@profile_picture", profilePic);
 
                         cmdAdd.ExecuteNonQuery();
 
@@ -188,13 +207,13 @@ namespace ServiceProvidingSystem
                     {
 
                         //update servicer sequence id
-                        strAdd = "UPDATE Sequence SET servicer_sequence = @servicer_sequence WHERE sequence_id = 'default'";
+                        String strUpdate = "UPDATE Sequence SET servicer_sequence = @servicer_sequence WHERE sequence_id = 'default'";
 
-                        cmdAdd = new SqlCommand(strAdd, con);
+                        SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
 
-                        cmdAdd.Parameters.AddWithValue("@servicer_sequence", newServicerId + 1);
+                        cmdUpdate.Parameters.AddWithValue("@servicer_sequence", newServicerId + 1);
 
-                        cmdAdd.ExecuteNonQuery();
+                        cmdUpdate.ExecuteNonQuery();
 
                         con.Close();
                     }
@@ -219,19 +238,34 @@ namespace ServiceProvidingSystem
                     int newClientId = 0;
 
                     con.Open();
-
-                    //retrieve data
-                    String strAdd = "SELECT * FROM Sequence WHERE sequence_id = 'default';";
-
-                    SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-                    SqlDataReader dataReader;
-                    dataReader = cmdAdd.ExecuteReader();
-                    while (dataReader.Read())
+                    try
                     {
-                        newClientId = (int)dataReader["client_sequence"];
-                    }
+                        //retrieve data
+                        String strSelect = "SELECT * FROM Sequence WHERE sequence_id = 'default';";
 
-                    con.Close();
+                        SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                        SqlDataReader dataReader;
+                        dataReader = cmdSelect.ExecuteReader();
+                        while (dataReader.Read())
+                        {
+                            newClientId = (int)dataReader["client_sequence"];
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex != null)
+                        {
+                            String message = ex.Message;
+                            Application["ErrorMessage"] = message;
+                        }
+                        Application["ErrorCode"] = " ";
+                        Response.Redirect("~/ErrorPage.aspx");
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
 
                     String strClientId = "CL" + newClientId.ToString("D" + 8);
                     String name = Session["name"].ToString();
@@ -240,6 +274,7 @@ namespace ServiceProvidingSystem
                     String dob = Session["dob"].ToString();
                     String emailAddress = Session["emailAddress"].ToString();
                     String password = Session["password"].ToString();
+                    String profilePic = "/Image/generaluser.png";
 
 
 
@@ -249,19 +284,20 @@ namespace ServiceProvidingSystem
                     {
 
                         //create client account
-                        strAdd = "INSERT INTO Client (client_id, full_name, identity_no, date_of_birth, contact_no, email_address, password, reward_points, credit_balance) VALUES (@client_id, @full_name, @identity_no, @date_of_birth, @contact_no, @email_address, @password, @reward_points, @credit_balance);";
+                        String strAdd = "INSERT INTO Client (client_id, full_name, identity_no, date_of_birth, contact_no, email_address, password, reward_points, profile_picture, client_rank) VALUES (@client_id, @full_name, @identity_no, @date_of_birth, @contact_no, @email_address, @password, @reward_points, @profile_picture, @client_rank);";
 
-                        cmdAdd = new SqlCommand(strAdd, con);
+                        SqlCommand cmdAdd = new SqlCommand(strAdd, con);
 
                         cmdAdd.Parameters.AddWithValue("@client_id", strClientId);
                         cmdAdd.Parameters.AddWithValue("@full_name", name);
-                        cmdAdd.Parameters.AddWithValue("@identity_no", phoneNo);
-                        cmdAdd.Parameters.AddWithValue("@date_of_birth", ic);
-                        cmdAdd.Parameters.AddWithValue("@contact_no", dob);
+                        cmdAdd.Parameters.AddWithValue("@identity_no", ic);
+                        cmdAdd.Parameters.AddWithValue("@date_of_birth", dob);
+                        cmdAdd.Parameters.AddWithValue("@contact_no", phoneNo);
                         cmdAdd.Parameters.AddWithValue("@email_address", emailAddress);
                         cmdAdd.Parameters.AddWithValue("@password", password);
                         cmdAdd.Parameters.AddWithValue("@reward_points", 0);
-                        cmdAdd.Parameters.AddWithValue("@credit_balance", 0.00);
+                        cmdAdd.Parameters.AddWithValue("@profile_picture", profilePic);
+                        cmdAdd.Parameters.AddWithValue("@client_rank", 'B');
 
                         cmdAdd.ExecuteNonQuery();
 
@@ -291,13 +327,13 @@ namespace ServiceProvidingSystem
                     {
 
                         //update client sequence id
-                        strAdd = "UPDATE Sequence SET client_sequence = @client_sequence WHERE sequence_id = 'default'";
+                        String strUpdate = "UPDATE Sequence SET client_sequence = @client_sequence WHERE sequence_id = 'default'";
 
-                        cmdAdd = new SqlCommand(strAdd, con);
+                        SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
 
-                        cmdAdd.Parameters.AddWithValue("@client_sequence", newClientId + 1);
+                        cmdUpdate.Parameters.AddWithValue("@client_sequence", newClientId + 1);
 
-                        cmdAdd.ExecuteNonQuery();
+                        cmdUpdate.ExecuteNonQuery();
 
                         con.Close();
                     }
@@ -321,7 +357,7 @@ namespace ServiceProvidingSystem
 
 
 
-                Response.Redirect("RegisterSuccessful.aspx");
+                Response.Redirect("~/RegisterSuccessful.aspx");
 
             }
             else

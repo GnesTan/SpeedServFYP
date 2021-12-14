@@ -12,9 +12,6 @@
               <!-- Login Form -->
  
        <div class="loginForm">
-        <div style="text-align:left; float:left;">
-            <asp:ImageButton runat="server" Height="33px" ImageUrl="~/Image/BackIcon.jpg" Width="33px"></asp:ImageButton>
-        </div>
 
 
         <div>
@@ -22,7 +19,7 @@
         </div>
         <div class="loginChild">
             <div class="inputLayout">
-                <asp:Image ID="Image1" runat="server" Height="141px" ImageUrl="~/Resources/Success.JPG" Width="157px" />
+                <asp:Image ID="Image1" runat="server" Height="141px" ImageUrl="~/Image/Success.JPG" Width="157px" />
 
                 <table>
                     <tr>
@@ -53,7 +50,7 @@
                     <tr>
                         <td style="text-align:center">
                             If the web page not redirect automatically, click
-                            <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/ChangePassword.aspx">Here</asp:HyperLink>
+                            <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="Login.aspx">Here</asp:HyperLink>
 
                         </td>             
                     </tr>
@@ -92,7 +89,7 @@
         width: 35%;
         height:500px;
         display: block;
-        margin-top: 30px;
+        margin-top: 180px;
         margin-bottom: 5%;
         margin-left: auto;
         margin-right: auto;

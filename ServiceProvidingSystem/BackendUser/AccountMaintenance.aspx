@@ -2,19 +2,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> 
        
 
-          <div class="topContainer"> 
-       <!-- Welcome Column Section -->
-         <div class="row welcome text-center">  
-         <div class="col-12">  
-            <div class="nav">                 
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/AddCloth.aspx" CausesValidation="false">Add Cloth</asp:LinkButton></div>
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/ViewCloth.aspx" CausesValidation="false">View Cloth</asp:LinkButton></div>
-            <div class="ul"><asp:LinkButton class="btn" runat="server" PostBackUrl="~/AccountMaintenance.aspx" CausesValidation="false">Account Maintenance</asp:LinkButton></div>             
-           </div>         
-         </div>
-         </div>  
-    </div>
-
     <div class="topicName">
         <br />
         <br />
@@ -78,18 +65,10 @@
         background-color: #f2f2f2;      
     }
 
-.images{    
-    width: 150px;
-    height: 110px;    
-    background: #f3f3f3;
-    padding: 1px;
-    border: 2px solid #161616;
-    margin-left: 20px;
-    position: relative;
-    vertical-align: top;    
-    box-shadow: inset -5px -5px 30px 0 #656565;
-    margin: 10px 15px 10px 15px;
-}
+        header{
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+        background: white;
+    }
 
 .rowMargin{
     padding-left:30px;
@@ -98,26 +77,8 @@
 
 
 
-.gridviewcss{
-     background-color: white;
-    margin-top:20px;
-    margin-bottom:20px;
-    padding-top:20px;
-    padding-bottom:20px;
-
-}
 
 
-.auto-style2 {
-    font-size: medium;
-}
-
-.auto-style3 {
-    font-size: large;
-}
-.auto-style4 {
-    color: #FF9900;
-}
 
 
 .rowStyle{
@@ -140,73 +101,50 @@
 }
 
 
-.topContainer{
-    text-align: center;
-    font-size: 25px;
-    background-color: white;
-    width: 100%;
-    height: 220px;
-}
-
-.auto-style9 {       
-    width: 30px;
-    height: 30px;
-}
-
 .topicName{
     max-width: 1000px;
     margin: auto;
     font-size: 25px;
+    margin-top:110px;
 }
 
-.nav {
-  list-style-type: none;
-  display: inline-block;
-  text-align: center;
-  margin: 0;      
+
+
+
+/*---Button --*/
+.btnNew{  
+    text-align:center;
+    width:100px;
+    background: none;
+    border: 3px solid;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
 }
 
-.ul {
-    display: inline-block;
-    font-size: 20px;
-    padding: 20px;
-    color: #c48e0e;
+
+.btn-primary {
+    background-color: #EF7E7E;
+    border: 1px solid #EF7E7E;
 }
 
-        /*---Button --*/
-        .btnNew{  
-          text-align:center;
-          width:100px;
-          background: none;
-          border: 3px solid;
-          border-radius: 10px;
-          color: #ffffff;
-          font-weight: 600;
-          cursor: pointer;
-          position: relative;
-          box-shadow: 0 5px 5px 0 rgba(0,0,0,0.1), 0 5px 10px 0 rgba(0,0,0,0.1);
-        }
+.btn-primary:hover {
+        background-color: #F68888;
+        border: 1px solid #F68888;
+}
 
+.btn-secondary {
+    background-color: #7B51F2;
+    border: 1px solid #7B51F2;
+}
 
-        .btn-primary {
-            background-color: #EF7E7E;
-            border: 1px solid #EF7E7E;
-        }
-
-        .btn-primary:hover {
-                background-color: #F68888;
-                border: 1px solid #F68888;
-        }
-
-        .btn-secondary {
-            background-color: #7B51F2;
-            border: 1px solid #7B51F2;
-        }
-
-        .btn-secondary:hover {
-                background-color: #8F6BF6;
-                border: 1px solid #8F6BF6;
-        }
+.btn-secondary:hover {
+        background-color: #8F6BF6;
+        border: 1px solid #8F6BF6;
+}
 
 
 

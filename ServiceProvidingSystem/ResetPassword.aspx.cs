@@ -12,13 +12,14 @@ namespace ServiceProvidingSystem
 {
     public partial class ResetPassword : System.Web.UI.Page
     {
-        static String str = ConfigurationManager.ConnectionStrings["SpeedServDB"].ConnectionString;
+        //setup SQL connection
+        static String str = ConfigurationManager.ConnectionStrings["SpeedServAzureDB"].ConnectionString;
 
         SqlConnection con = new SqlConnection(str);
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 if (Session["strId"] == null)
                 {
@@ -56,38 +57,53 @@ namespace ServiceProvidingSystem
             }
 
             con.Open();
-
-            //retrieve data
-            String strAdd = "SELECT * FROM " + dbTable + " WHERE " + idType + " = @strId;";
-
-            SqlCommand cmdAdd = new SqlCommand(strAdd, con);
-            cmdAdd.Parameters.AddWithValue("@idType", idType);
-            cmdAdd.Parameters.AddWithValue("@strId", strId);
-            SqlDataReader dataReader;
-            dataReader = cmdAdd.ExecuteReader();
-            while (dataReader.Read())
+            try
             {
-                dbPassword = dataReader["password"].ToString();
+                //retrieve data
+                String strSelect = "SELECT * FROM " + dbTable + " WHERE " + idType + " = @strId;";
+
+                SqlCommand cmdSelect = new SqlCommand(strSelect, con);
+                cmdSelect.Parameters.AddWithValue("@idType", idType);
+                cmdSelect.Parameters.AddWithValue("@strId", strId);
+                SqlDataReader dataReader;
+                dataReader = cmdSelect.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    dbPassword = dataReader["password"].ToString();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                if (ex != null)
+                {
+                    String message = ex.Message;
+                    Application["ErrorMessage"] = message;
+                }
+                Application["ErrorCode"] = " ";
+                Response.Redirect("~/ErrorPage.aspx");
+            }
+            finally
+            {
+                con.Close();
             }
 
-            con.Close();
 
-
-            if(currentPassword.Equals(dbPassword))
+            if (currentPassword.Equals(dbPassword))
             {
                 try
                 {
                     con.Open();
 
                     //update servicer password
-                    strAdd = "UPDATE " + dbTable + " SET password = @newPassword WHERE " + idType + " = @strId;";
+                    String strUpdate = "UPDATE " + dbTable + " SET password = @newPassword WHERE " + idType + " = @strId;";
 
-                    cmdAdd = new SqlCommand(strAdd, con);
+                    SqlCommand cmdUpdate = new SqlCommand(strUpdate, con);
 
-                    cmdAdd.Parameters.AddWithValue("@newPassword", newPassword);
-                    cmdAdd.Parameters.AddWithValue("@strId", strId);
+                    cmdUpdate.Parameters.AddWithValue("@newPassword", newPassword);
+                    cmdUpdate.Parameters.AddWithValue("@strId", strId);
 
-                    cmdAdd.ExecuteNonQuery();
+                    cmdUpdate.ExecuteNonQuery();
 
                     con.Close();
                 }
@@ -114,7 +130,7 @@ namespace ServiceProvidingSystem
             }
             else
             {
-                lblError.Text = "The current password is invalid." + "curpass" + currentPassword + " hhh dpass:" + dbPassword + " iduser:" + strId + "usertype:" + userType;
+                lblError.Text = "The current password is invalid.";
 
             }
 
@@ -133,7 +149,7 @@ namespace ServiceProvidingSystem
             }
             else
             {
-                Response.Redirect("~/Client/ClientViewProfile.aspx");
+                Response.Redirect("~/Client/ViewProfile.aspx");
             }
         }
     }

@@ -33,6 +33,15 @@ namespace ServiceProvidingSystem.Servicer
         protected global::System.Web.UI.WebControls.Label lblReferPic;
 
         /// <summary>
+        /// ReferencePic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image ReferencePic;
+
+        /// <summary>
         /// ImageUpload control.
         /// </summary>
         /// <remarks>
@@ -213,6 +222,15 @@ namespace ServiceProvidingSystem.Servicer
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFees;
 
         /// <summary>
+        /// PricePattern control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator PricePattern;
+
+        /// <summary>
         /// lblRemarks control.
         /// </summary>
         /// <remarks>
@@ -229,6 +247,15 @@ namespace ServiceProvidingSystem.Servicer
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtRemarks;
+
+        /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
         /// btnPost control.

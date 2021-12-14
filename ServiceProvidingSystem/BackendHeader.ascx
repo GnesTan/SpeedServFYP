@@ -1,27 +1,34 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BackendHeader.ascx.cs" Inherits="ServiceProvidingSystem.BackendHeader" %>
 
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
-                <div class ="container-fluid">         
-                <a class="navbar-brand" href="~/Homepage.aspx" runat="server"><img src="~/Image/JojoLogoArtist.PNG" width="50" height="50" runat="server"/></a>
-                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto">       
-                          <li class="nav-item active">
-                          <asp:Label class="nav-link" ID="welcomeName" runat="server" Text=""></asp:Label>
-                              &nbsp;&nbsp;&nbsp;&nbsp;
-                        </li>  
-                          <li class="nav-item active">
-                            <asp:LinkButton class="nav-link" ID="LinkButton4" PostBackUrl="~/Artist/ArtistMenu.aspx" runat="server" CausesValidation="false">Menu</asp:LinkButton>
-                        </li>                                           
-                      
-                        <li class="nav-item active">
-                            <asp:LinkButton class="nav-link color-white" ID="LinkButton2" PostBackUrl="~/Servicer/ServicerViewProfile.aspx" runat="server" CausesValidation="false"><i class="fa fa-user" aria-hidden="true"></i><span class="tooltiptext">Edit Profile</span></asp:LinkButton>
-                        </li>
 
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-                    </ul>              
-                </div>
-               </div> 
-            </nav>
+            <asp:LinkButton runat="server" class="logo d-flex align-items-center" PostBackUrl="~/BackendUser/BackEndHomepage.aspx">
+            <i class="bi bi-lightning"></i>
+            <span><span class="spec" style="color: #FE5959;">S</span>peedServ</span>
+            </asp:LinkButton>
+
+            <%--Nav Bar--%>
+                <nav id="navbar" class="navbar">
+                <ul>                                              
+                    <li class="dropdown"><asp:LinkButton runat="server" PostBackUrl="#"><span>Request</span> <i class="bi bi-chevron-down"></i></asp:LinkButton>
+                    <ul>
+                    <li><asp:LinkButton runat="server" PostBackUrl="~/BackendUser/ServicerWithdrawal.aspx">Servicer Withdrawal</asp:LinkButton></li>
+                    <li><asp:LinkButton runat="server" PostBackUrl="~/BackendUser/SubscriptionRequest.aspx">Subscription</asp:LinkButton></li>
+                    <li><asp:LinkButton runat="server" PostBackUrl="~/BackendUser/ClientPayment.aspx">Client Payment</asp:LinkButton></li>
+                    </ul>
+                    </li>
+
+                    <li class="dropdown"><asp:LinkButton class="nav-link" runat="server" PostBackUrl="#"><i class="bi bi-person-circle" style="margin-right: 5px;"></i><i class="bi bi-chevron-down"></i></asp:LinkButton>
+                    <ul style="margin-top: 10px;">
+                    <li><asp:LinkButton runat="server" PostBackUrl="~/BackendUser/AccountMaintenance.aspx">Account Maintenance</asp:LinkButton></li>
+                    <li><asp:LinkButton runat="server" PostBackUrl="~/BackendUser/BackendReport.aspx">Report</asp:LinkButton></li>
+                    <li><asp:LinkButton ID="lbSignOut" runat="server" OnClick="lbSignOut_Click">Sign Out</asp:LinkButton></li>
+                    </ul>
+                    </li>
+                </ul>        
+                </nav>
+            <%--End Nav Bar--%>
+        </div>
+    </header>
